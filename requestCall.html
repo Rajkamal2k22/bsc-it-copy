@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request a call</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="styles.css">
+    <!-- <script src="https://cdn.tailwindcss.com">
+    </script> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+<body>
+
+       <!-- navbar started -->
+
+<nav class="navbar">
+    <div class="logo">
+       <a href="#home"> <h4>B.Sc IT</h4> </a>
+    </div>
+    <ul class="nav-links">
+        <li><a href="http://127.0.0.1:5500/index.html#home">Home</a></li>
+        <li class="dropdown">
+            <a href="#" id="about">About Us ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="http://127.0.0.1:5500/history.html">Our History</a></li>
+                <li><a href="http://127.0.0.1:5500/faculties.html">Faculties</a></li>
+                <li><a href="http://127.0.0.1:5500/placedstudent.html">Recurited Students</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" id="Academics">Academics ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="#">Programs</a></li>
+                <li><a href="academics.html">Syllabus</a></li>
+                <li><a href="http://127.0.0.1:5500/examination.html">Examinations</a></li>
+            </ul>
+        </li>
+        <li><a href="http://127.0.0.1:5500/gallery.html#">Gallery</a></li>
+    </ul>
+  
+        <li id="menuIcon"><img src="images/icons8-menu-48.png" alt="Menu"></li>
+</nav>
+
+<!-- navbar ended -->
+
+    <div class="callContainer">
+        <div class="containerItem">
+            <h3 id="callBackHeading">Callback form</h3>
+            <p id="callBackPara">Provide us with your phone number</p>
+    <form action="#">
+    <label for="name">  
+        <input type="text" name="name" id="name" required placeholder="Name">
+    </label>
+    <br>
+    <label for="requestCall"> 
+            <!-- <select name="telCode">
+                <option value="India" selected>+91</option>
+            </select> -->
+            <input type="tel" id="requestCall" name="requestCall" placeholder="Phone ☎️ ">
+    </label>
+    <br>
+    <label for="callTiming" id="callBackTime">Time to Call ⏰
+        <input type="time" id="callTime">
+        <br>
+       <label for="dayToCall">Date to Call 🗓️ 
+       <input type="date" id="callDay">
+    </label>
+    </label>
+    
+    <button type="submit" id="callBackBtn">Submit</button>
+    </form>
+    </div>
+    </div>
+
+
+<!-- footer section open -->
+<div class="mainFooter">
+    <div class="footerBox">
+        <div class="firstBox">
+            <p id="footerHeading">Social Media</p>
+            <ul id="footerIcon">
+                <li><a href="https://www.instagram.com/_ar_silent_/" title="Instagram" target="_blank" class="instagram"><i class='bx bxl-instagram-alt' id="instagram"></i></a></li>
+
+                <li><a href="https://www.facebook.com/anshugupta.king.9/" title="Facebook" target="_blank" class="facebook"><i class='bx bxl-facebook-circle'></i></a></li>
+                
+                <li><a href="https://www.youtube.com/@Imranshuraj" title="Youtube" target="_blank" class="youtube"><i class='bx bxl-youtube'></i></a></li>
+                
+                <li><a href="https://www.linkedin.com/in/anshu-raj-004544337/" title="Linkedin" target="_blank" class="linkedin"><i class='bx bxl-linkedin-square'></i></a></li>
+
+            </ul>
+        </div>
+
+        <div class="secondBox">
+            <p id="footerHeading">Contact</p>
+            <ul>
+                <li><a href="#" id="footerlocationIcon"><i class='bx bx-current-location bx-flip-vertical bx-tada' style='color:#bd232a' ></i></a>B.Sc IT Department, Patna-3
+                </li>
+                <li><a href="#" id="footerlocationIcon"><i class='bx bxs-phone-call bx-flip-vertical bx-tada' style='color:#1eade1'></i> </a>6205651487 </li>
+                <li><a href="#" id="footerlocationIcon"><i class='bx bxl-gmail bx-tada' style='color:#e11e29'></i></a>Cocasprincipal@gmail.com </li>
+            </ul>
+        </div>
+
+        <div class="thirdBox">
+            <p id="footerHeading">Quick Links</p>
+            <ul>
+                <li>Home</li>
+                <li>About Us</li>
+                <li>Academics</li>
+                <li>Gallery</li>
+                <li>Contact</li>
+            </ul>
+          
+        </div>
+
+        <div class="fourthBox">
+            <p id="footerHeading">Navigate</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3804.251600603494!2d85.1593298756202!3d25.60126097745311!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed5f3562555553%3A0x9c0c5f0fd6bfd704!2sCollege%20of%20Commerce%2C%20Arts%20and%20Science!5e1!3m2!1sen!2sin!4v1739352710239!5m2!1sen!2sin" width="100%" height="70%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        
+       
+    </div>
+   
+</div>
+<div class="line">
+    <hr>
+</div>
+<div class="belowFooter">
+    <hr>
+    <p>&copy 2025 B.Sc IT Department. All rights reserved.</p>
+    <div class="credit">
+        Created By <span id="creditName">B.Sc IT 2023-26</span>
+    </div>
+</div>
+<!-- footer section closed -->
+<script src="script.js">
+
+</script>
+</body>
+</html>
