@@ -65,17 +65,17 @@
 
   
   
-  .instagram {
-      /* color:transparent; */
-      color: linear-gradient(135deg,rgb(104, 6, 170),rgb(176, 59, 113),rgb(224, 50, 50),yellow);
-      background-clip: text;
-      
-  }
+  /* #instagram {
+    color:transparent; */
+   /* background: linear-gradient(115deg, #f9ce34, #ee2a7b, #6228d7); 
+   background: -webkit-linear-gradient(120deg, #f9ce34, #ee2a7b, #6228d7); 
+} */
 
 
 
-  .facebook {
-      color: rgb(3, 119, 214);
+
+  #facebook {
+      color: rgb(4, 100, 177);
       /* border: 2px solid rgb(3, 119, 214) ; */
     
       
@@ -83,14 +83,14 @@
   }
 
   
-  .youtube {
+  #youtube {
       color: red;
       /* border: 2px solid red; */
   }
   
  
   
-  .linkedin{
+  #linkedin{
       color: rgb(0, 94, 172);
       /* border: 2px solid rgb(0, 94, 172) ; */
       
@@ -317,6 +317,31 @@
 
 
   }
+
+
+  @media screen and (max-width:660px) {
+
+    .socialMedia ul {
+      gap: 0.1rem;
+      
+      }
+
+      #instagram, #facebook, #youtube, #linkedin{
+        font-size: 1.5rem;
+       
+      }
+
+      .header1
+      {
+        padding: 10px 10px;
+      }
+
+      #whatsappIcon1 , #gmailIcon1 , #requestCallIcon1{
+        font-size: 1.8rem;
+        
+       
+      }
+}
 
 
   .establishedAndRank {
