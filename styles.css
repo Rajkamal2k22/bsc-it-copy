@@ -645,7 +645,15 @@ justify-content: center;
        
       } */
 
-      .thirdBox ul li:hover{
+      .thirdBox a{
+        text-decoration: none;
+        display: flex;
+        padding: 0.3rem;
+        color: white;
+
+      }
+
+      .thirdBox a:hover{
        cursor: pointer;
        color: rgba(251, 102, 15, 0.971);
 
