@@ -391,6 +391,10 @@
   #about,#Academics{
      background:none; 
   }
+
+  .dropdown{
+    position: relative;    
+  }
   
   .dropdown-menu {
     display: none;
@@ -423,21 +427,45 @@
 
 
   
-  #menuIcon {
-    display: none;
-    cursor: pointer;
-    list-style: none;
-  }
-
+.hamBurger span{
+      height: 3px;
+      width: 40px;
+      background: white;
+      margin: 4px 0;
+      border-radius: 5px;
+}
 
 
   @media screen and (max-width:660px) {
-    #menuIcon {
-        display: block;
+    .hamBurger{
+        display: flex;
+        flex-direction: column;
       }
       .nav-links{
         display: none;
+        position: absolute;
+        top:60px;
+        right: 20px;
+        background: #ffffffda;
+        flex-direction: column;
+        width: 150px;
+        padding:10px 10px;
+        gap: 10px;;
+        border-radius: 5px;
       }
+      .nav-links li a{
+        color: black;
+      }
+
+      .dropdown-menu{
+        position: relative;
+        background:#ffffff;
+      } 
+
+      .nav-links.active {
+        display: flex;
+      }
+
   }
 
   @media screen and (max-width:900px) {

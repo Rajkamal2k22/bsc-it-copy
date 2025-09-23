@@ -209,3 +209,31 @@ const matchesName = name.includes(searchName);
 card.style.display = matchesSubject && matchesName ? "block" : "none";
 });
 }
+
+const hamBurger = document.querySelector('.hamBurger');
+const navLinks = document.querySelector('.nav-links');
+hamBurger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+
+
+const dropBtns = document.querySelectorAll('.drop-btn');
+
+    dropBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const parentLi = btn.parentElement;
+        parentLi.classList.toggle('active');
+      });
+    });
+
+    // Close dropdown on scroll
+    window.addEventListener('scroll', () => {
+      dropBtns.forEach(btn => {
+        const parentLi = btn.parentElement;
+        if(parentLi.classList.contains('active')){
+          parentLi.classList.remove('active');
+        }
+      });
+    });
