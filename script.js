@@ -1,27 +1,41 @@
+     // Navbar JS started
+     
+const navbar = document.querySelector('.navbar');
+
+window.addEventListener('wheel', function(event) {
+  if (event.deltaY > 0) {
+  
+    navbar.style.top = `-${navbar.offsetHeight}px`;  // Hide 
+  } 
+  else {
+    
+    navbar.style.top = '0'; // Show
+  }
+});
+     //Navbar JS Ended
+
+
 // This function will run when the HTML document is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
 
     // --- Code for requestCall.html ---
-    // It will only run if an element with the id "callBackBtn" exists
     const callBackBtn = document.getElementById("callBackBtn");
     if (callBackBtn) {
         callBackBtn.addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent form submission if it's a button in a form
+            event.preventDefault(); 
             callBackBtn.innerHTML = "Submitted Successfully";
         });
     }
 
     // --- Code for gallery.html ---
-    // It will only run if an element with the id "gal-gallery" exists
     const gallery = document.getElementById('gal-gallery');
     if (gallery) {
         const allPhotos = Array.from(document.querySelectorAll('.gal-photo'));
         const lightbox = document.getElementById('gal-lightbox');
         const lightboxImg = document.getElementById('gal-lightbox-img');
-        let visiblePhotos = allPhotos; // Initially all photos are visible
+        let visiblePhotos = allPhotos; 
         let currentIndex = 0;
 
-        // Function to add click listeners to currently visible photos
         function addClickListeners() {
             visiblePhotos.forEach((photo, index) => {
                 photo.onclick = () => {
@@ -32,7 +46,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        // Make functions for lightbox controls globally accessible by attaching them to the window object
         window.closeLightbox = function() {
             lightbox.classList.remove('active');
         }
@@ -55,18 +68,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        // Initial setup for the gallery: add the click listeners
         addClickListeners();
     }
 });
 
-
-// These functions need to be available globally for the inline `onclick` attributes in your other HTML files.
-// So we define them outside the main event listener.
-
 function showContent(section) {
     let syllabusList = document.getElementById('syllabusList');
-    if (!syllabusList) return; // Exit if the element doesn't exist
+    if (!syllabusList) return; 
 
     let sections = {
         acdemicsCalendar: "<h2>Academic calendars</h2><p>The academic calendar outlines the schedule for the academic year, including the commencement of classes, internal assessments, and examination periods. For detailed dates and events, please refer to the official academic calendar: Academic Calendar PDF.</p>",
@@ -237,3 +245,34 @@ const dropBtns = document.querySelectorAll('.drop-btn');
         }
       });
     });
+
+
+    // Examination JS started
+
+    const tabs = document.querySelectorAll('.tab');
+    const cards = document.querySelectorAll('.pyq-card');
+    let currentClass = '1st';
+
+    function showYear(classYear) {
+      currentClass = classYear;
+      tabs.forEach(tab => tab.classList.remove('active'));
+      document.querySelector(`.tab[onclick*="${classYear}"]`).classList.add('active');
+      filterPYQs();
+    }
+
+    function filterPYQs() {
+      const selectedYear = document.getElementById('yearFilter').value;
+      cards.forEach(card => {
+        const matchesClass = card.getAttribute('data-class') === currentClass;
+        const matchesYear = selectedYear === 'all' || card.getAttribute('data-year') === selectedYear;
+        card.parentElement.style.display = (matchesClass && matchesYear) ? 'block' : 'none';
+      });
+    }
+
+    // Initial view
+    showYear('1st');
+  
+    //  Examination JS ended
+
+
+

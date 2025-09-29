@@ -10,11 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.tailwindcss.com">
-    </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
 </head>
 <body>
+  <div class="colorFiller"> </div>
      <div class="header1">
             <div class="socialMedia">
                 <ul>
@@ -106,108 +105,7 @@
 <!-- navbar ended -->
 
 <!-- Main Section open -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>College PYQ Viewer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 100%;
-      margin: auto;
-    }
-    h1 {
-      font-family: "Josefin Sans", sans-serif;
-      text-align: center;
-      font-size: 2.5rem;
-      color: #4f46e5;
-      margin-bottom: 30px;
-    }
-    .tabs {
-      
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
-    }
-    .tab {
-      background: #e0e7ff;
-      color: #3730a3;
-      border: none;
-      padding: 10px 20px;
-      font-size: 1rem;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: 600;
-    }
-    .tab.active {
-      background-color: #4f46e5;
-      color: white;
-    }
-    .filter {
-      font-family: "Josefin Sans", sans-serif;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 25px;
-    }
-    .filter select {
-      padding: 10px 16px;
-      font-size: 1rem;
-      border-radius: 8px;
-      border: 1px solid #cbd5e1;
-    }
-    .pyq-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-    .pyq-card {
-      background: rgba(4, 76, 242, 0.322);
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      transition: transform 0.2s ease;
-      cursor: pointer;
-    }
-    .pyq-card:hover {
-      transform: translateY(-5px);
-    }
-    .pyq-card img {
-      width: 100px;
-      height: 130px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 12px;
-    }
-    .pyq-card h4 {
-      font-size: 1.1rem;
-      color: #1e40af;
-      margin-bottom: 6px;
-    }
-    .pyq-card p {
-      font-size: 0.95rem;
-      color: #4b5563;
-    }
-    a.pyq-link {
-      text-decoration: none;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Previous Year Question Papers</h1>
+  <h1 id="examHeading">Previous Year Question Papers</h1>
 
     <div class="tabs">
       <button class="tab active" onclick="showYear('1st')">1st Year</button>
@@ -229,6 +127,7 @@
       </select>
     </div>
 
+  <div class="examContainer">
             <!--For 2025 -->
 
      <div class="pyq-grid" id="pyqContainer">
@@ -275,7 +174,7 @@
       </a>
 
             <!-- Now for 2024 -->
-    <div class="pyq-grid" id="pyqContainer">
+    <div class="pyq-grid">
       <a href="pdfs/math-2024.pdf" target="_blank" class="pyq-link">
         <div class="pyq-card" data-class="1st" data-year="2024">
           <img src="images/1 mth 24.webp" alt="Math 2024">
@@ -1146,35 +1045,6 @@
       
     </div>
   </div>
-
-  <script>
-    const tabs = document.querySelectorAll('.tab');
-    const cards = document.querySelectorAll('.pyq-card');
-    let currentClass = '1st';
-
-    function showYear(classYear) {
-      currentClass = classYear;
-      tabs.forEach(tab => tab.classList.remove('active'));
-      document.querySelector(`.tab[onclick*="${classYear}"]`).classList.add('active');
-      filterPYQs();
-    }
-
-    function filterPYQs() {
-      const selectedYear = document.getElementById('yearFilter').value;
-      cards.forEach(card => {
-        const matchesClass = card.getAttribute('data-class') === currentClass;
-        const matchesYear = selectedYear === 'all' || card.getAttribute('data-year') === selectedYear;
-        card.parentElement.style.display = (matchesClass && matchesYear) ? 'block' : 'none';
-      });
-    }
-
-    // Initial view
-    showYear('1st');
-  </script>
-</body>
-</html>
-
-
 <!-- Main Section closed -->
 
 
@@ -1233,13 +1103,10 @@
     <hr>
     <p>&copy 2025 B.Sc. IT Department. All rights reserved.</p>
     <div class="credit">
-        Created By <span id="creditName">B.Sc. IT 2023-26</span>
+        Crafted with ❤️ by<span id="creditName">Rajkamal</span>
     </div>
 </div>
 <!-- footer section closed -->
-
-<script src="script.js">
-
-</script>
+<script src="script.js"></script>
 </body>
 </html>
