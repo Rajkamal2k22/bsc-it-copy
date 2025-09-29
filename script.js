@@ -1,17 +1,56 @@
      // Navbar JS started
-     
 const navbar = document.querySelector('.navbar');
 
+
+function hideNavbar() {
+    navbar.style.top = `-${navbar.offsetHeight}px`; // Hide navbar
+}
+
+function showNavbar() {
+    navbar.style.top = '0'; // Show navbar
+}
+
+
+// --- Event Listener for Laptops/Desktops
+
 window.addEventListener('wheel', function(event) {
+
   if (event.deltaY > 0) {
-  
-    navbar.style.top = `-${navbar.offsetHeight}px`;  // Hide 
-  } 
-  else {
-    
-    navbar.style.top = '0'; // Show
+    hideNavbar();
+  } else {
+    showNavbar();
   }
 });
+
+
+// --- Event Listeners for Mobile/Touch Devices
+
+let startY; 
+
+document.addEventListener('touchstart', function(event) {
+
+    startY = event.touches[0].clientY;
+}, { passive: true });
+
+document.addEventListener('touchmove', function(event) {
+    if (!startY) {
+        return; 
+    }
+
+    const currentY = event.touches[0].clientY;
+
+
+    const deltaY = startY - currentY;
+
+    if (deltaY > 5) {
+        hideNavbar();
+    } else if (deltaY < -5) {
+        showNavbar();
+    }
+    startY = null; 
+
+}, { passive: true });
+
      //Navbar JS Ended
 
 
