@@ -9,9 +9,7 @@ function hideNavbar() {
 function showNavbar() {
     navbar.style.top = '0'; // Show navbar
 }
-
-
-// --- Event Listener for Laptops/Desktops
+//Event Listener for Laptops/Desktops
 
 window.addEventListener('wheel', function(event) {
 
@@ -23,7 +21,7 @@ window.addEventListener('wheel', function(event) {
 });
 
 
-// --- Event Listeners for Mobile/Touch Devices
+//Event Listeners for Mobile/Touch Devices
 
 let startY; 
 

@@ -211,9 +211,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* background-image: linear-gradient(110deg,#e0b97f,rgb(255, 255, 255),#a2eeb8); */
-   
-    background-image: linear-gradient(110deg,#e0b97fc9,rgb(255, 255, 255),#a2eeb8c9);
+    background-image: linear-gradient(110deg,#e0b97f,rgb(255, 255, 255),#a2eeb8);
     padding: 15px 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     flex-wrap: wrap;
