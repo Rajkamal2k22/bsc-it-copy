@@ -1,4 +1,15 @@
-     // Navbar JS started
+
+    // 'load' इवेंट तब चलता है जब पूरा पेज (इमेज, स्क्रिप्ट, CSS सहित) लोड हो जाता है।
+    window.addEventListener('load', function() {
+        // प्रीलोडर एलिमेंट को चुनें
+        const preloader = document.getElementById('preloader');
+        
+        // प्रीलोडर को छिपा दें
+        preloader.style.display = 'none';
+    });
+
+   
+   // Navbar JS started
 const navbar = document.querySelector('.navbar');
 
 

@@ -1981,3 +1981,49 @@ th, td {
     }
     /* Questions section ended */
 
+    /* प्रीलोडर का मेन कंटेनर */
+#preloader {
+    position: fixed; /* स्क्रीन पर फिक्स रखने के लिए */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #353333; /* बैकग्राउंड कलर (सफ़ेद) */
+    z-index: 9999; /* यह सुनिश्चित करता है कि यह सबसे ऊपर रहे */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ /* घूमने वाला स्पिनर */
+/* .spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3; 
+    border-top: 5px solid #3498db; 
+    border-radius: 50%; 
+    animation: spin 1s linear infinite; 
+} */
+
+/* की-फ्रेम एनीमेशन (घूमने के लिए) */
+/* @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}  */
+
+
+.preloaderText{
+  font-size: 2rem;
+  font-weight: 1000;
+  color: white;
+  animation: fadeIn 0.7s ease-in-out;
+}
+
+@keyframes fadeIn {
+        from {
+            opacity: 0; 
+        }
+        to {
+            opacity: 1; 
+        }
+    }
