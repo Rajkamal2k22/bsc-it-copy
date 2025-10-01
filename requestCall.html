@@ -6,7 +6,7 @@
     <title>Request a call</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
 <body>
 
        <!-- navbar started -->
@@ -47,29 +47,30 @@
 <!-- navbar ended -->
 
     <div class="callContainer">
-        <div class="containerItem">
-            <h3 id="callBackHeading">Callback form</h3>
-            <p id="callBackPara">Provide us with your phone number</p>
-    <form action="#">
+    <div class="containerItem">
+    <h3 id="callBackHeading">Callback form</h3>
+    <p id="callBackPara">Provide us with your phone number</p>
+    <form action="https://api.web3forms.com/submit" method="POST" id="callBackForm">
+    <input type="hidden" name="access_key" value="f7f20a6a-faa8-41bc-a5fb-6f3e799a95c8">
     <label for="name">  
-        <input type="text" name="name" id="name" required placeholder="Name">
+    <input type="text" name="Name" id="name" required placeholder="Name">
     </label>
     <br>
     <label for="requestCall"> 
-            <!-- <select name="telCode">
-                <option value="India" selected>+91</option>
-            </select> -->
-            <input type="tel" id="requestCall" name="requestCall" placeholder="Phone ☎️ ">
+    <input type="tel" id="requestCall" name="Phone no." inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="Phone ☎️ ">
+    </label>
+    <br>
+    <label for="email"> 
+    <input type="email" id="email" name="Email" placeholder="Your Email" required>
     </label>
     <br>
     <label for="callTiming" id="callBackTime">Time to Call ⏰
-        <input type="time" id="callTime">
-        <br>
-       <label for="dayToCall">Date to Call 🗓️ 
-       <input type="date" id="callDay">
+    <input type="time" id="callTime" name="Call Time">
     </label>
+    <br>
+    <label for="dayToCall">Date to Call 🗓️ 
+    <input type="date" id="callDay" name="Call Day">
     </label>
-    
     <button type="submit" id="callBackBtn">Submit</button>
     </form>
     </div>

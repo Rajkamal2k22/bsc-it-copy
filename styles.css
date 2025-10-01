@@ -578,16 +578,26 @@ justify-content: center;
       font-weight: 500;
    }
 
-   #name  , #requestCall{
+   #name , #requestCall{
     width: 95%;
     height: 2rem;
     margin-bottom: 1rem;
     padding: 0.2rem 0.6rem;
-    color: black;
-
+    color: rgb(6, 6, 6);
+    text-transform: capitalize;
+    font-size: 1.1rem;
    }
 
-   form{
+   #email{
+    width: 95%;
+    height: 2rem;
+    margin-bottom: 1rem;
+    padding: 0.2rem 0.6rem;
+    color: rgb(6, 6, 6);
+    font-size: 1.1rem;
+   }
+
+   #callBackForm{
     padding:0.5rem 1rem;
 
    
@@ -634,7 +644,6 @@ justify-content: center;
      }
   
 }
-
 
 @media screen and (max-width:700px) {
    
@@ -1476,7 +1485,7 @@ th, td {
     animation: fadeInUp 0.8s ease forwards;
   }
   
-  select, input[type="text"] {
+ #nameSearch , #subjectFilter {
     padding: 12px;
     font-size: 16px;
     border-radius: 8px;

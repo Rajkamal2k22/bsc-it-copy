@@ -67,13 +67,13 @@ document.addEventListener('touchmove', function(event) {
 document.addEventListener('DOMContentLoaded', function() {
 
     // --- Code for requestCall.html ---
-    const callBackBtn = document.getElementById("callBackBtn");
-    if (callBackBtn) {
-        callBackBtn.addEventListener('click', function(event) {
-            event.preventDefault(); 
-            callBackBtn.innerHTML = "Submitted Successfully";
-        });
-    }
+    // const callBackBtn = document.getElementById("callBackBtn");
+    // if (callBackBtn) {
+    //     callBackBtn.addEventListener('click', function(event) {
+    //         event.preventDefault(); 
+    //         callBackBtn.innerHTML = "Submitted Successfully";
+    //     });
+    // }
 
     // --- Code for gallery.html ---
     const gallery = document.getElementById('gal-gallery');
