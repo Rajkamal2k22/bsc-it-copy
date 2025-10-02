@@ -1,3 +1,4 @@
+/* Universal css */
 * {
     margin: 0;
     padding: 0;
@@ -18,6 +19,38 @@
       font-family: Arial, sans-serif;
       overflow-y: auto;
   }
+/*Preloader css */
+
+  #preloader {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #353333; 
+    z-index: 9999; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.preloaderText{
+  font-size: 2rem;
+  font-weight: 1000;
+  color: white;
+  animation: fadeIn 0.7s ease-in-out;
+}
+
+@keyframes fadeIn {
+        from {
+            opacity: 0; 
+        }
+        to {
+            opacity: 1; 
+        }
+    }
+
+    /* Header 1 css started */
 
   .colorFiller{
     width: 100%;
@@ -34,26 +67,18 @@
       height: auto;
       background-image: linear-gradient(110deg,#e0b97f,rgb(255, 255, 255),#a2eeb8);
       flex-wrap: wrap;
-      /* margin-top: 53px; */
   }
-
 
  .socialMedia ul {
       list-style: none;
      gap: 0.5rem;
       display: flex;
       align-items: center;
-      
-  
   }
   
 .socialMedia ul li {
       display: inline-block;
-      /* background-color: white; */
       border-radius: 5px;
-     
-     
-    
   }
   
  .socialMedia ul li a {
@@ -71,47 +96,32 @@
       
   }
 
-  
-  
   /* #instagram {
     color:transparent; */
    /* background: linear-gradient(115deg, #f9ce34, #ee2a7b, #6228d7); 
    background: -webkit-linear-gradient(120deg, #f9ce34, #ee2a7b, #6228d7); 
 } */
 
-
-
-
   #facebook {
       color: rgb(4, 100, 177);
       /* border: 2px solid rgb(3, 119, 214) ; */
-    
-      
-
   }
 
-  
   #youtube {
       color: red;
       /* border: 2px solid red; */
   }
-  
- 
-  
+
   #linkedin{
       color: rgb(0, 94, 172);
       /* border: 2px solid rgb(0, 94, 172) ; */
       
   }
-  
 
-  
   .whatsapp1 {
     display: flex;
       text-align: center;
-      /* background-color: white; */
       padding: 2px;
-      /* border: 2px solid rgb(29, 208, 29) ; */
       border-radius: 5px;
       font-size: 2rem;
       transition: box-shadow 0.3s ease, transform 0.3s ease;
@@ -134,17 +144,13 @@
   
   .whatsapp1 a i {
       transition: transform 0.3s ease, color 0.3s ease;
-      font-size: 2rem;
-     
+      font-size: 2rem;  
   }
-  
-  
+
   .gmail1 {
       display: flex;
       text-align: center;
-      /* background-color: white; */
       padding: 2px;
-      /* border: 2px solid red ; */
       border-radius: 5px;
       transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
@@ -152,7 +158,7 @@
   .gmail1:hover {
       transform: scale(1.05);
   }
-  
+
   .gmail1 a {
       color: red;
       font-size: 25px;
@@ -163,19 +169,17 @@
       margin-left: 2px;
       font-family: Arial, Helvetica, sans-serif;
   }
-  
+
   .gmail1 a i {
       transition: transform 0.3s ease, color 0.3s ease;
-      font-size: 1.8rem;
-      
+      font-size: 1.8rem; 
   }
-  
   
   .whatsappGmail2{
       display: none;
       text-decoration: none;
   }
-  
+
   .requestCall {
     display: flex;
     align-items: center;
@@ -205,8 +209,9 @@
   #requestCallIcon2 {
       display: none;
   }
-  
-  
+
+  /* Header2 Css started */
+
   .header2 {
     display: flex;
     align-items: center;
@@ -229,12 +234,9 @@
     width: 10%;
   }
 
-
-  
   .cocasLogo img {
     width: 100%;
-    height: auto;
-    
+    height: auto; 
   }
 
   .cocasName{
@@ -259,7 +261,6 @@
     font-weight: 900;
     justify-content: center;
   }
-  
 
   @media screen and (max-width:1245px) {
     .cocasName h2 {
@@ -269,9 +270,6 @@
       .cocasName p {
         font-size: 1.2rem;
       }
-
-     
-    
   }
 
   @media screen and (max-width:970px) {
@@ -287,10 +285,6 @@
 
   @media screen and (max-width:660px) {
 
-    /* .header1{
-      display: none;
-    } */
-
     .header2{
       padding: 2px;
     }
@@ -300,12 +294,10 @@
       font-weight: 700;
     }
 
-#para1 , #para2 , #para3{
+  #para1 , #para2 , #para3{
     line-height: 1.8rem;
     font-size: 0.5rem;
 }
-
-
 
    .cocas{
     display: flex;
@@ -316,39 +308,31 @@
 
    .cocasName{
     width: 100%;
-
-   }
+    }
 
    .cocasName h2{
     font-size: 1.2  rem;
     font-weight: 900;
-
-   }
+    }
 
    .cocasLogo img{
-    
     width: 5rem;
     height: 5rem;
-   }
+    }
 
    .logo h4{
     font-size: 1.5rem;
    }
-
-
   }
-
 
   @media screen and (max-width:660px) {
 
     .socialMedia ul {
       gap: 0.1rem;
-      
       }
 
       #instagram, #facebook, #youtube, #linkedin{
         font-size: 1.5rem;
-       
       }
 
       .header1
@@ -363,8 +347,9 @@
       }
 }
 
+/* Established detail css */
 
-  .establishedAndRank {
+  /* .establishedAndRank {
     text-align: right;
   }
   
@@ -381,8 +366,10 @@
   .establishedAndRank p {
     font-size: 16px;
     color: #777;
-  }
-  
+  } */
+
+
+  /* Navbar css */
   .navbar {
     width: 100%;
     display: flex;
@@ -428,7 +415,6 @@
   }
   
   .nav-links a:hover {
-    /* background: #d9d3b7; */
     color: rgba(251, 102, 15, 0.971);
     border-radius: 5px;
   }
@@ -470,9 +456,7 @@
     display: block;
   }
 
-
-  
-.hamBurger span{
+  .hamBurger span{
       height: 3px;
       width: 40px;
       background: white;
@@ -517,20 +501,15 @@
   a.whatsappLink ,a.gmailLink1, a.requestCallLink{
     display: none;
   }
- 
   }
 
-  .containerMain{
+  /* .containerMain{
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  
-
-  
-  
 
    .dummy{
     width: 50vw;
@@ -541,9 +520,7 @@
     color: red;
     font-size: 2rem;
   
-   }
-   
-
+   } */
 
    /* requestCall.html started */
    .callContainer{
@@ -718,11 +695,6 @@ justify-content: center;
         font-size: 1.4rem;
       }
 
-      /* #footerlocationIcon a{
-        font-size: 5rem;
-       
-      } */
-
       .thirdBox a{
         text-decoration: none;
         display: flex;
@@ -736,8 +708,6 @@ justify-content: center;
        color: rgba(251, 102, 15, 0.971);
 
       }
-
-      
 
       .belowFooter{
         background-color:#8267c7e1;
@@ -756,14 +726,12 @@ justify-content: center;
         
       }
 
-  
       #creditName{
         color: #f3d200;
         margin-left: 0.7rem;
 
       }
     
-
       @media screen and (max-width:800px) {
         .belowFooter{
          font-size: 0.9rem;
@@ -790,12 +758,11 @@ justify-content: center;
           width: 95%;
         }
 
-          .footerBox{
+         .footerBox{
                grid-template-columns: repeat(auto-fit,minmax(300px,500px));
            }
         
       }
-
 
     /* footer css ended */
 
@@ -804,10 +771,8 @@ justify-content: center;
     .homeContent{
       display: flex;
       width: 100%;
-      /* height: 100%; */
       justify-content: center;
       align-items: center;
-      /* background-color: yellow; */
     }
     
     .mainContent{
@@ -852,7 +817,6 @@ justify-content: center;
       
     }
 
-    
     .bookmarksList li{
     margin: 2rem 0rem;
     font-size: 1.05rem;
@@ -865,8 +829,6 @@ justify-content: center;
       cursor: pointer;
       color: #d9534f;
       font-size: 1.1rem;
-
-    
       }
   
 
@@ -994,13 +956,11 @@ justify-content: center;
     }
   }
   
-
-
     /* Academics Css Ended */
 
 
-    /* Hompage main section started */
 
+    /* Hompage main section started */
 
     .sliderWraper{
       /* position: relative; */
@@ -1015,8 +975,6 @@ justify-content: center;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
       box-shadow: 01.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25%);
-      /* border-radius: 0.5rem; */
-      
   }
   
   .slider img{
@@ -1038,20 +996,8 @@ justify-content: center;
     z-index: 1;
 }
 
-/* .sliderNav a{
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 50%;
-    background-color: #fff;
-    transition: opacity ease 250ms;
-} */
-
-.sliderNav a:hover{
-    opacity: 1;
-}
-
 .homeTextBg{
-  background-image: url("images/blue-vintage-decorative-balls-background.jpg");
+  background-image: url("images/blue-vintage-decorative-balls-background.webp");
   background-position: center center;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -1059,15 +1005,12 @@ justify-content: center;
   width: 100vw;
 }
 
-
 .homeTextSection{
  display: flex;
  width: 90vw;
  display: flex;
  justify-self: center;
- 
 }
-
 
 .hometext{
   width: 70%;
@@ -1078,7 +1021,6 @@ justify-content: center;
   font-size: 2.3rem;
   font-weight: 900;
   word-wrap: break-word;
-  /* text-align: center; */
 } 
 
 #para1 , #para2 , #para3{
@@ -1193,8 +1135,6 @@ justify-content: center;
     width: 100%;
   }
 
-  
-
   .hometext h1{
     font-size: 1.9rem;
     font-weight: 700;
@@ -1207,9 +1147,6 @@ justify-content: center;
     padding: 0.5rem;
   }
 
-.adressSection{
-  padding: 0.1rem;
-}
 
   #para1 , #para2 , #para3{
     line-height: 1.5rem;
@@ -1222,12 +1159,11 @@ justify-content: center;
     word-wrap: break-word;
   }
 }
-      /* Hompage main section Ended */
+ /* Hompage main section Ended */
+
 
  /* Placed Students section started */
  .section {
-  /* padding-top: 10px;
-  padding-bottom: 60px; */
   background: linear-gradient(to right, #eef2f3, #cfd9df);
   text-align: center;
 }
@@ -1462,6 +1398,7 @@ th, td {
 /* Placed Students section Ended */
 
 
+
    /* Faculties section started */
    .facultiesBody {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -1633,10 +1570,8 @@ th, td {
   }
 
   }
-
-  
-   
     /* Faculties section Ended */
+
 
     /* History section started */
     .adressSection{
@@ -1674,12 +1609,11 @@ th, td {
         }
 
       .adressSection{
-        width: 90%;
+        width: 100%;
         padding:0rem;
       
     }
   }
-
     /* History section Ended */
 
 
@@ -1833,10 +1767,6 @@ th, td {
       
     }
       }
-    
-
-   
-
     /* gallery Section ended */
 
 
@@ -1934,8 +1864,7 @@ th, td {
       text-decoration: none;
     }
 
-
-      @media screen and (max-width:1100px) {
+    @media screen and (max-width:1100px) {
 
       .examContainer{
         padding: 1rem;
@@ -1957,8 +1886,6 @@ th, td {
        .pyq-card{
         padding:0.5rem;
       }
-
-   
     }
 
     @media screen and (max-width:660px) {
@@ -1986,55 +1913,5 @@ th, td {
       margin: 25px 0px;
       padding: 0rem 0.2rem;
     }
-
-
-   
     }
     /* Questions section ended */
-
-    /* प्रीलोडर का मेन कंटेनर */
-#preloader {
-    position: fixed; /* स्क्रीन पर फिक्स रखने के लिए */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #353333; /* बैकग्राउंड कलर (सफ़ेद) */
-    z-index: 9999; /* यह सुनिश्चित करता है कि यह सबसे ऊपर रहे */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
- /* घूमने वाला स्पिनर */
-/* .spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid #f3f3f3; 
-    border-top: 5px solid #3498db; 
-    border-radius: 50%; 
-    animation: spin 1s linear infinite; 
-} */
-
-/* की-फ्रेम एनीमेशन (घूमने के लिए) */
-/* @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}  */
-
-
-.preloaderText{
-  font-size: 2rem;
-  font-weight: 1000;
-  color: white;
-  animation: fadeIn 0.7s ease-in-out;
-}
-
-@keyframes fadeIn {
-        from {
-            opacity: 0; 
-        }
-        to {
-            opacity: 1; 
-        }
-    }
