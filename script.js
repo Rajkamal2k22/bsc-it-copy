@@ -1,11 +1,8 @@
+window.addEventListener('load', function() {
 
-    // 'load' इवेंट तब चलता है जब पूरा पेज (इमेज, स्क्रिप्ट, CSS सहित) लोड हो जाता है।
-    window.addEventListener('load', function() {
-        // प्रीलोडर एलिमेंट को चुनें
-        const preloader = document.getElementById('preloader');
+const preloader = document.getElementById('preloader');
         
-        // प्रीलोडर को छिपा दें
-        preloader.style.display = 'none';
+    preloader.style.display = 'none';
     });
 
    
@@ -304,7 +301,10 @@ const dropBtns = document.querySelectorAll('.drop-btn');
     function showYear(classYear) {
       currentClass = classYear;
       tabs.forEach(tab => tab.classList.remove('active'));
-      document.querySelector(`.tab[onclick*="${classYear}"]`).classList.add('active');
+     const activeTab = document.querySelector(`.tab[onclick*="${classYear}"]`);
+    if (activeTab) {
+    activeTab.classList.add('active');
+  }
       filterPYQs();
     }
 
