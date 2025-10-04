@@ -96,11 +96,10 @@
       
   }
 
-  /* #instagram {
-    color:transparent; */
-   /* background: linear-gradient(115deg, #f9ce34, #ee2a7b, #6228d7); 
-   background: -webkit-linear-gradient(120deg, #f9ce34, #ee2a7b, #6228d7); 
-} */
+  #instagram {
+      color: rgb(193, 53, 132);
+  
+  }
 
   #facebook {
       color: rgb(4, 100, 177);
