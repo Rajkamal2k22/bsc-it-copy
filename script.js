@@ -63,14 +63,35 @@ document.addEventListener('touchmove', function(event) {
 // This function will run when the HTML document is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
 
-    // --- Code for requestCall.html ---
-    // const callBackBtn = document.getElementById("callBackBtn");
-    // if (callBackBtn) {
-    //     callBackBtn.addEventListener('click', function(event) {
-    //         event.preventDefault(); 
-    //         callBackBtn.innerHTML = "Submitted Successfully";
-    //     });
-    // }
+    const form = document.getElementById('callBackForm')
+
+        if (form) {
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: formData,
+        });
+
+        if (response.ok) {
+          alert("✅ Form submitted successfully!");
+          form.reset();
+          setTimeout(() => {
+            location.reload(); 
+          }, 1500);
+        } else {
+          alert("❌ Submission failed. Please try again.");
+        }
+      } catch (error) {
+        console.error(error);
+        alert("⚠️ Something went wrong. Please check your internet connection.");
+      }
+    });
+  }
 
     // --- Code for gallery.html ---
     const gallery = document.getElementById('gal-gallery');
