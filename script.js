@@ -284,12 +284,24 @@ card.style.display = matchesSubject && matchesName ? "block" : "none";
 });
 }
 
+//Hamburger code started
+
 const hamBurger = document.querySelector('.hamBurger');
 const navLinks = document.querySelector('.nav-links');
-hamBurger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+
+
+hamBurger.addEventListener('click', (e) => {
+  e.stopPropagation(); 
+  navLinks.classList.toggle('active');
 });
 
+document.addEventListener('click', (e) => {
+  if (!navLinks.contains(e.target) && !hamBurger.contains(e.target)) {
+    navLinks.classList.remove('active');
+  }
+});
+
+//Hamburger code ended
 
 
 const dropBtns = document.querySelectorAll('.drop-btn');
