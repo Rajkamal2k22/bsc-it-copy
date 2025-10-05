@@ -529,7 +529,7 @@ display: flex;
 align-items: flex-start;
 justify-content: space-around;
 gap: 2rem;
-padding: 6rem  2rem;
+padding: 6rem  0.4rem;
    }
 
   .rightContainer , .leftContainer{
@@ -538,7 +538,7 @@ padding: 6rem  2rem;
   background: #fff;
   box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 1rem 3rem;
    
    }
 
@@ -603,7 +603,7 @@ padding: 6rem  2rem;
    }
 
    #callBackForm{
-    padding:0.5rem 1rem;
+    padding:0.5rem 0rem;
 
    
    }
@@ -664,7 +664,7 @@ padding: 6rem  2rem;
   background: #fff;
   box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 1rem 0rem;
    
    }
 
