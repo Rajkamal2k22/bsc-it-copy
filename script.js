@@ -6,7 +6,150 @@ const preloader = document.getElementById('preloader');
     });
 
    
-   // Navbar JS started
+    //Notification Bar Logic  started
+
+  const notificationTrack = document.querySelector('.notificationTrack');
+    const notificationItemsTop = document.querySelectorAll('.notificationItem');
+    const announcementContainer = document.querySelector('.announcement-container');
+
+    function renderDefaultScrollingAnnouncements() {
+        announcementContainer.innerHTML = ''; 
+
+        const mainHeading = document.createElement('h3');
+        mainHeading.textContent = 'Important Notices';
+        mainHeading.classList.add('announcements-main-heading');
+        announcementContainer.appendChild(mainHeading);
+
+        const scrollWrapper = document.createElement('div');
+        scrollWrapper.classList.add('announcement-scroll-wrapper');
+        announcementContainer.appendChild(scrollWrapper);
+
+        const noticesListScrolling = document.createElement('div');
+        noticesListScrolling.classList.add('notices-list-scrolling');
+        scrollWrapper.appendChild(noticesListScrolling);
+
+    
+        const allNoticesData = []; 
+        notificationItemsTop.forEach(item => {
+            const shortText = item.textContent.trim();
+            const fullMessage = item.getAttribute('data-full'); 
+            if (shortText && fullMessage) {
+                allNoticesData.push({ short: shortText, full: fullMessage });
+            }
+        });
+
+
+        const numRepeats = 3; 
+        for (let i = 0; i < numRepeats; i++) {
+            allNoticesData.forEach(notice => { 
+                const noticeCardTemplate = document.createElement('div');
+                noticeCardTemplate.classList.add('notice-card-scrolling');
+                noticeCardTemplate.setAttribute('data-full', notice.full); 
+                noticeCardTemplate.style.cursor = 'pointer'; 
+
+                const icon = document.createElement('i');
+                icon.classList.add('fas', 'fa-info-circle', 'notice-icon-scrolling');
+
+                const noticeText = document.createElement('span');
+                noticeText.textContent = notice.short; 
+                noticeText.classList.add('notice-card-text-scrolling');
+
+                noticeCardTemplate.appendChild(icon);
+                noticeCardTemplate.appendChild(noticeText);
+
+          
+                noticeCardTemplate.addEventListener('click', () => {
+                    displaySingleDetailedAnnouncement(notice.full);
+                });
+
+                noticesListScrolling.appendChild(noticeCardTemplate);
+            });
+        }
+        
+      
+        const contentHeight = noticesListScrolling.scrollHeight;
+        const wrapperHeight = scrollWrapper.clientHeight;
+      
+        const animationDuration = contentHeight / (wrapperHeight * 0.05); 
+        noticesListScrolling.style.animationDuration = `${animationDuration}s`;
+        
+       
+        noticesListScrolling.style.animationPlayState = 'running';
+
+        scrollWrapper.addEventListener('mouseenter', () => {
+            noticesListScrolling.style.animationPlayState = 'paused';
+        });
+        scrollWrapper.addEventListener('mouseleave', () => {
+            noticesListScrolling.style.animationPlayState = 'running';
+        });
+    }
+
+    function displaySingleDetailedAnnouncement(fullMessage) {
+        announcementContainer.innerHTML = ''; 
+
+        const detailDiv = document.createElement('div');
+        detailDiv.classList.add('detailed-announcement');
+        detailDiv.innerHTML = `<h3>Announcement Details</h3><p>${fullMessage}</p>`;
+        announcementContainer.appendChild(detailDiv);
+
+        const backButton = document.createElement('button');
+        backButton.textContent = 'Back to All Notices';
+        backButton.classList.add('back-to-notices-btn');
+        backButton.addEventListener('click', renderDefaultScrollingAnnouncements); // 
+        announcementContainer.appendChild(backButton);
+
+        announcementContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    if (notificationTrack && notificationItemsTop.length > 0 && announcementContainer) {
+        const totalNotifications = notificationItemsTop.length;
+     
+        notificationItemsTop.forEach(item => {
+            const clone = item.cloneNode(true);
+            notificationTrack.appendChild(clone);
+        });
+
+        let position = 0;
+        const scrollSpeed = 0.6; 
+        const firstItem = notificationItemsTop[0];
+  
+        const itemWidth = firstItem ? (firstItem.offsetWidth + parseFloat(getComputedStyle(firstItem).marginRight || 0)) : 0;
+
+
+        function animateScroll() {
+            position -= scrollSpeed;
+
+            if (position <= -itemWidth * totalNotifications && totalNotifications > 0) { 
+                position = 0;
+            }
+            notificationTrack.style.transform = `translateX(${position}px)`;
+            requestAnimationFrame(animateScroll);
+        }
+
+        animateScroll();
+
+
+
+        notificationTrack.querySelectorAll('.notificationItem').forEach(item => {
+            item.addEventListener('click', () => {
+                const fullMessage = item.getAttribute('data-full');
+                if (fullMessage) {
+                    displaySingleDetailedAnnouncement(fullMessage);
+                }
+            });
+        });
+
+
+        renderDefaultScrollingAnnouncements();
+    }
+
+//Notification Bar Logic  Ended
+
+
+
+
+// Navbar JS started
+
 const navbar = document.querySelector('.navbar');
 
 
@@ -60,7 +203,7 @@ document.addEventListener('touchmove', function(event) {
      //Navbar JS Ended
 
 
-// This function will run when the HTML document is fully loaded
+// ye function tab kaam karega jab page ka pura content load ho jayega...
 document.addEventListener('DOMContentLoaded', function() {
 
     const form = document.getElementById('callBackForm')
@@ -93,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-    // --- Code for gallery.html ---
+    //Code for gallery.html 
     const gallery = document.getElementById('gal-gallery');
     if (gallery) {
         const allPhotos = Array.from(document.querySelectorAll('.gal-photo'));
@@ -136,7 +279,38 @@ document.addEventListener('DOMContentLoaded', function() {
 
         addClickListeners();
     }
+
+    //FILTER LOGIC 
+const filterButtons = document.querySelectorAll(".filter-btn");
+const galleryItems = document.querySelectorAll(".galDesc");
+
+filterButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    // Remove active class from all buttons
+    filterButtons.forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
+
+    const filter = button.getAttribute("data-filter");
+
+    galleryItems.forEach(item => {
+      if (filter === "all" || item.querySelector('.gal-photo').classList.contains(filter)) {
+        item.style.display = "flex"; 
+      } else {
+        item.style.display = "none";
+      }
+    });
+
+
+    visiblePhotos = Array.from(document.querySelectorAll('.gal-photo'))
+                        .filter(photo => photo.parentElement.style.display !== "none");
+    addClickListeners(); 
+  });
 });
+
+});
+
+
+// Academics logic started
 
 function showContent(section) {
     let syllabusList = document.getElementById('syllabusList');
@@ -209,6 +383,8 @@ function showContent(section) {
         syllabusList.innerHTML = sections[section] || "<h2>Welcome</h2><p>Select a bookmark.</p>";
     }
 }
+
+// Academics logic started
 
 function sortTable(n) {
 const table = document.getElementById("studentsTable");
@@ -350,10 +526,8 @@ const dropBtns = document.querySelectorAll('.drop-btn');
       });
     }
 
-    // Initial view
-    showYear('1st');
-  
-    //  Examination JS ended
-
-
-
+        // Initial view
+        showYear('1st');
+      
+        //  Examination JS ended
+    
