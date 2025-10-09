@@ -206,6 +206,77 @@ document.addEventListener('touchmove', function(event) {
 // ye function tab kaam karega jab page ka pura content load ho jayega...
 document.addEventListener('DOMContentLoaded', function() {
 
+     //main page slider image logic started
+
+
+const studentSliderContainer = document.querySelector('.slider');
+const studentSliderImages = document.querySelectorAll('.slider img');
+const studentSliderDots = document.querySelectorAll('.sliderNav .dot');
+const prevStudentSlideBtn = document.getElementById('prevStudentSlide');
+const nextStudentSlideBtn = document.getElementById('nextStudentSlide');
+
+let currentStudentSlideIndex = 0;
+const studentSlideIntervalTime = 5000; 
+
+let autoStudentSlideInterval;
+
+function showStudentSlide(index) {
+
+    if (index >= studentSliderImages.length) {
+        currentStudentSlideIndex = 0; 
+    } else if (index < 0) {
+        currentStudentSlideIndex = studentSliderImages.length - 1; 
+    } else {
+        currentStudentSlideIndex = index;
+    }
+
+    studentSliderContainer.scrollLeft = studentSliderImages[currentStudentSlideIndex].offsetLeft;
+
+    studentSliderDots.forEach((dot, i) => {
+        if (i === currentStudentSlideIndex) {
+            dot.classList.add('active'); 
+        } else {
+            dot.classList.remove('active'); 
+        }
+    });
+}
+
+function nextStudentSlide() {
+    showStudentSlide(currentStudentSlideIndex + 1);
+}
+
+function prevStudentSlide() {
+    showStudentSlide(currentStudentSlideIndex - 1);
+}
+
+function startAutoSlide() {
+    clearInterval(autoStudentSlideInterval); 
+    autoStudentSlideInterval = setInterval(nextStudentSlide, studentSlideIntervalTime);
+}
+
+
+studentSliderDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        const targetIndex = parseInt(dot.dataset.slideIndex);
+        showStudentSlide(targetIndex);
+        startAutoSlide(); 
+    });
+});
+
+prevStudentSlideBtn.addEventListener('click', () => {
+    prevStudentSlide();
+    startAutoSlide(); 
+});
+
+nextStudentSlideBtn.addEventListener('click', () => {
+    nextStudentSlide();
+    startAutoSlide(); 
+});
+
+showStudentSlide(0);
+startAutoSlide();
+
+
     const form = document.getElementById('callBackForm')
 
         if (form) {
@@ -530,4 +601,4 @@ const dropBtns = document.querySelectorAll('.drop-btn');
         showYear('1st');
       
         //  Examination JS ended
-    
+
