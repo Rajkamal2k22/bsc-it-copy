@@ -1920,6 +1920,11 @@ th, td {
       padding:0px 0.7rem;
       
     }
+
+    .filter-btn{
+      margin: 0.5rem 0.2rem;
+    }
+
       }
     /* gallery Section ended */
 
