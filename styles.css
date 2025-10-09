@@ -12,7 +12,6 @@
   html , body {
     width: 100%;
     height: 100%;
-
     scroll-behavior: smooth;
   }
   
@@ -267,6 +266,8 @@
             }
         }
 
+
+
     .sliderWraper{
       /* position: relative; */
       width: 100vw;
@@ -310,12 +311,15 @@
   width: 100vw;
 }
 
+
 .homeTextSection{
  display: flex;
  width: 90vw;
  display: flex;
  justify-self: center;
+ 
 }
+
 
 .hometext{
   width: 70%;
@@ -350,7 +354,7 @@
 .quickLinkBoxes{
   display: grid;
   grid-template-rows: repeat(2,1fr);
-  padding: 1rem;
+  padding: 0.5rem;
 
 }
 
@@ -536,9 +540,9 @@
       font-weight: 700;
     }
 
-  #para1 , #para2 , #para3{
+  #para1,#para2,#para3{
     line-height: 1.8rem;
-    font-size: 0.5rem;
+    font-size: 1.2rem;
 }
 
    .cocas{
