@@ -276,6 +276,7 @@ nextStudentSlideBtn.addEventListener('click', () => {
 showStudentSlide(0);
 startAutoSlide();
 
+//contactus form js started
 
     const form = document.getElementById('callBackForm')
 
@@ -306,6 +307,9 @@ startAutoSlide();
       }
     });
   }
+
+});
+
 
     //Code for gallery.html 
     const gallery = document.getElementById('gal-gallery');
@@ -376,8 +380,6 @@ filterButtons.forEach(button => {
                         .filter(photo => photo.parentElement.style.display !== "none");
     addClickListeners(); 
   });
-});
-
 });
 
 
