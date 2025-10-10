@@ -71,11 +71,24 @@
 
     <h1 id="facultiesh1">Faculty of B.Sc. IT Department</h1>
   <div class="wrapFaculties">
+    
+    <!-- Coordinator Section - Moved above controls -->
+    <div class="coordinator-section">
+      <div class="faculty-card coordinator-card" data-subject="Programming Data Structures" data-name="Shambhu Sharan">
+        <img src="images/profile image.webp" alt="Faculty Photo" />
+        <h3>Dr. Shambhu Sharan</h3>
+        <p><strong>Designation:</strong> CORDINATOR</p>
+        <p><strong>📩</strong> ---- </p>
+        <p><strong>📞</strong> ---- </p>
+        <p><strong>Subject:</strong> Data Structures</p>
+        <p><strong>Degree:</strong> Ph.D. in Computer Science</p>
+        <p class="about">Passionate about clean code & teaching logic-building.</p>
+        <a href="path/to/shambhu_sharan_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
+      </div>
+    </div>
+
     <div class="controls">
-
         <input type="text" id="nameSearch" placeholder="Search by faculties name..." oninput="filterFaculty()" />
-
-
       <select id="subjectFilter" onchange="filterFaculty()">
         <option value="all">All Subjects</option>
         <option value="Programming">Programming</option>
@@ -87,21 +100,10 @@
           <option value="Hindi">Hindi</option>
            <option value="English">English</option>
       </select>
-  
-      
     </div>
   
     <div class="faculty-grid" id="facultyGrid">
-      <div class="faculty-card" data-subject="Programming" data-name="Shambhu Sharan">
-        <img src="images/profile image.webp" alt="Faculty Photo" />
-        <h3>Dr. Shambhu Sharan</h3>
-        <p><strong>Designation:</strong> Cordinator of B.sc. IT Department</p>
-        <p><strong>📩</strong> ---- </p>
-        <p><strong>📞</strong> ---- </p>
-        <p><strong>Subject:</strong> Data Structures</p>
-        <p><strong>Degree:</strong> Ph.D. in Computer Science</p>
-        <p class="about">Passionate about clean code & teaching logic-building.</p>
-      </div>
+      <!-- Rest of the Faculty Cards -->
       <div class="faculty-card" data-subject="Data Structures Database" data-name="Sanjeev Kumar">
         <img src="images/Sanjeev_sir.webp" alt="Faculty Photo" />
         <h3>Dr. Sanjeev Kumar Sinha</h3>
@@ -111,6 +113,7 @@
         <p><strong>Subject:</strong>DBMS / LINUX</p>
         <p><strong>Degree:</strong> MCA</p>
         <p class="about">Passionate about simplifying DBMS and Linux concepts through practical applications.</p>
+        <a href="path/to/sanjeev_kumar_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
       </div>
       <div class="faculty-card" data-subject="Networking" data-name="Amitesh Kumar">
         <img src="images/Amitesh sir.webp" alt="Faculty Photo" />
@@ -121,6 +124,7 @@
         <p><strong>Subject:</strong> BE </p>
         <p><strong>Degree:</strong> Phd , M.Tech </p>
         <p class="about">Helps students to inspiring educational excellence and professional growth in students.</p>
+        <a href="path/to/amitesh_kumar_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
       </div>
       <div class="faculty-card" data-subject="Mathematics" data-name="Manoj Kumar">
         <img src="images/Manoj_sir.webp" alt="Faculty Photo" />
@@ -131,6 +135,7 @@
         <p><strong>Subject:</strong> Mathematics</p>
         <p><strong>Degree:</strong> M.sc. Mathematics </p>
         <p class="about">Helps students to inspiring logical thinking and confidence in mathematics.</p>
+        <a href="path/to/manoj_kumar_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
       </div>
       <div class="faculty-card" data-subject="English" data-name="Om Prakash Yadav">
         <img src="images/Op yadav.webp" alt="Faculty Photo" />
@@ -141,6 +146,7 @@
         <p><strong>Subject:</strong> English</p>
         <p><strong>Degree:</strong> M.A. English , PhD</p>
         <p class="about">Helps students master grammar, vocabulary, and effective expression with confidence.</p>
+        <a href="path/to/om_prakash_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
       </div>
 
       <div class="faculty-card" data-subject="Hindi" data-name="Archana Triphathi">
@@ -152,6 +158,7 @@
         <p><strong>Subject:</strong> Hindi</p>
         <p><strong>Degree:</strong> ---- </p>
         <p class="about">हिंदी भाषा और साहित्य को सरल व रोचक तरीके से समझाने के प्रति समर्पित।</p>
+        <a href="path/to/archana_triphathi_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
       </div>
 
       <div class="faculty-card" data-subject="Web Development" data-name="Jai Bardhan Kanth">
@@ -163,6 +170,7 @@
         <p><strong>Subject:</strong> Programming , IWD</p>
         <p><strong>Degree:</strong> MCA</p>
         <p class="about">Creative and enthusiastic about modern web technologies.</p>
+        <a href="path/to/jai_bardhan_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
       </div>
 
       <div class="faculty-card" data-subject="Mathematics" data-name="AQ Subhani">
@@ -174,6 +182,7 @@
         <p><strong>Subject:</strong> Mathematics</p>
         <p><strong>Degree:</strong> MCA</p>
         <p class="about">Creative and enthusiastic about modern web technologies.</p>
+        <a href="path/to/aq_subhani_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
       </div>
 
       <div class="faculty-card" data-subject="Programming" data-name="Himanshu Ojha">
@@ -185,6 +194,7 @@
         <p><strong>Subject:</strong> Programming</p>
         <p><strong>Degree:</strong> PhD , MCA</p>
         <p class="about">Dedicated to simplifying core programming concepts with real-world examples.</p>
+        <a href="path/to/himanshu_ojha_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
       </div>
 
     </div>
@@ -246,7 +256,7 @@
     <hr>
 </div>
 <div class="belowFooter">
-    <p>&copy 2025 B.Sc. IT Department. All rights reserved.</p>
+    <p>&copy; 2025 B.Sc. IT Department. All rights reserved.</p>
     <div class="credit">
          Crafted with ❤️ by<span id="creditName">Rajkamal</span>
     </div>

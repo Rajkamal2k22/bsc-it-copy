@@ -516,11 +516,10 @@ rows[i].style.display = "none";
 }
 }
 
-
 function filterFaculty() {
     const selectedSubject = document.getElementById("subjectFilter").value.toLowerCase();
 const searchName = document.getElementById("nameSearch").value.toLowerCase();
-const cards = document.querySelectorAll(".faculty-card");
+const cards = document.querySelectorAll(".faculty-grid .faculty-card"); // Only target cards within faculty-grid
 
 cards.forEach(card => {
 const subject = card.getAttribute("data-subject").toLowerCase();
@@ -529,7 +528,7 @@ const name = card.getAttribute("data-name").toLowerCase();
 const matchesSubject = selectedSubject === "all" || subject.includes(selectedSubject);
 const matchesName = name.includes(searchName);
 
-card.style.display = matchesSubject && matchesName ? "block" : "none";
+card.style.display = matchesSubject && matchesName ? "flex" : "none"; 
 });
 }
 
