@@ -216,7 +216,7 @@ const prevStudentSlideBtn = document.getElementById('prevStudentSlide');
 const nextStudentSlideBtn = document.getElementById('nextStudentSlide');
 
 let currentStudentSlideIndex = 0;
-const studentSlideIntervalTime = 5000; 
+const studentSlideIntervalTime = 3000; 
 
 let autoStudentSlideInterval;
 

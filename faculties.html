@@ -68,137 +68,161 @@
 
 <!-- Main Section open -->
 <div class="facultiesBody" id="scrollTofaculties">
-
     <h1 id="facultiesh1">Faculty of B.Sc. IT Department</h1>
-  <div class="wrapFaculties">
-    
-    <!-- Coordinator Section - Moved above controls -->
-    <div class="coordinator-section">
-      <div class="faculty-card coordinator-card" data-subject="Programming Data Structures" data-name="Shambhu Sharan">
-        <img src="images/profile image.webp" alt="Faculty Photo" />
-        <h3>Dr. Shambhu Sharan</h3>
-        <p><strong>Designation:</strong> CORDINATOR</p>
-        <p><strong>📩</strong> ---- </p>
-        <p><strong>📞</strong> ---- </p>
-        <p><strong>Subject:</strong> Data Structures</p>
-        <p><strong>Degree:</strong> Ph.D. in Computer Science</p>
-        <p class="about">Passionate about clean code & teaching logic-building.</p>
-        <a href="path/to/shambhu_sharan_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
-      </div>
+
+    <div class="wrapFaculties">
+        <div class="controls">
+            <input type="text" id="nameSearch" placeholder="Search by faculties name..." oninput="filterFaculty()" />
+            <select id="subjectFilter" onchange="filterFaculty()">
+                <option value="all">All Subjects</option>
+                <option value="Programming">Programming</option>
+                <option value="Data Structures">Data Structures</option>
+                <option value="Networking">Networking</option>
+                <option value="Database">Database</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Hindi">Hindi</option>
+                <option value="English">English</option>
+            </select>
+        </div>
+
+        <div class="faculty-grid" id="facultyGrid">
+            <!-- COORDINATOR CARD - NOW INSIDE faculty-grid -->
+            <div class="faculty-card coordinator-first" data-subject="Programming Data Structures" data-name="Shambhu Sharan">
+                <img src="images/hod_sir.jpeg" alt="Faculty Photo" />
+                <h3>Dr. Shambhu Sharan</h3>
+                <p><strong>Designation:</strong> Coordinator</p>
+                <p><strong>📩</strong> ---- </p>
+                <p><strong>📞</strong> ---- </p>
+                <p><strong>Subject:</strong> Data Structures</p>
+                <p><strong>Degree:</strong> Ph.D. in Computer Science</p>
+                <p class="about">Passionate about clean code & teaching logic-building.</p>
+                <a href="path/to/shambhu_sharan_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
+            </div>
+
+            <!-- Rest of the Faculty Cards -->
+
+             <div class="faculty-card" data-subject="Data Structures Database" data-name="Rakesh Kumar">
+                <img src="images/rakesh_sir.jpeg" alt="Faculty Photo" />
+                <h3>Mr. Rakesh kumar</h3>
+                <p><strong>Designation:</strong>Assistant Coordinator</p>
+                <p><strong>📩</strong>----</p>
+                <p><strong>📞</strong> ----</p>
+                <p><strong>Subject:</strong>----</p>
+                <p><strong>Degree:</strong> ----</p>
+                <p class="about">Passionate about simplifying DBMS and Linux concepts through practical applications.</p>
+                <a href="path/to/rakesh_kumar_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
+            </div>
+
+            <div class="faculty-card" data-subject="Data Structures Database" data-name="Sanjeev Kumar">
+                <img src="images/Sanjeev_sir.webp" alt="Faculty Photo" />
+                <h3>Dr. Sanjeev Kumar Sinha</h3>
+                <p><strong>Designation:</strong>Faculty</p>
+                <p><strong>📩</strong>sanjeevsinhamca@gmail.com</p>
+                <p><strong>📞</strong> 9931917742</p>
+                <p><strong>Subject:</strong>DBMS / LINUX</p>
+                <p><strong>Degree:</strong> MCA</p>
+                <p class="about">Passionate about simplifying DBMS and Linux concepts through practical applications.</p>
+                <a href="path/to/sanjeev_kumar_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
+            </div>
+
+
+            <div class="faculty-card" data-subject="Networking" data-name="Amitesh Kumar">
+                <img src="images/Amitesh sir.webp" alt="Faculty Photo" />
+                <h3>Mr. Amitesh Kumar</h3>
+                <p><strong>Designation:</strong> Faculty</p>
+                <p><strong>📩</strong> ---- </p>
+                <p><strong>📞</strong> ---- </p>
+                <p><strong>Subject:</strong> BE </p>
+                <p><strong>Degree:</strong> Phd , M.Tech </p>
+                <p class="about">Helps students to inspiring educational excellence and professional growth in students.</p>
+                <a href="path/to/amitesh_kumar_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
+            </div>
+            <div class="faculty-card" data-subject="Mathematics" data-name="Manoj Kumar">
+                <img src="images/Manoj_sir.webp" alt="Faculty Photo" />
+                <h3>Mr. Manoj Kumar Yadav</h3>
+                <p><strong>Designation:</strong> Faculty</p>
+                <p><strong>📩</strong> ---- </p>
+                <p><strong>📞</strong> ---- </p>
+                <p><strong>Subject:</strong> Mathematics</p>
+                <p><strong>Degree:</strong> M.sc. Mathematics </p>
+                <p class="about">Helps students to inspiring logical thinking and confidence in mathematics.</p>
+                <a href="path/to/manoj_kumar_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
+            </div>
+            <div class="faculty-card" data-subject="English" data-name="Om Prakash Yadav">
+                <img src="images/Op yadav.webp" alt="Faculty Photo" />
+                <h3>Dr. Om Prakash Yadav</h3>
+                <p><strong>Designation:</strong> Faculty</p>
+                <p><strong>📩</strong> omprakash511972@gmail.com</p>
+                <p><strong>📞</strong> ---- </p>
+                <p><strong>Subject:</strong> English</p>
+                <p><strong>Degree:</strong> M.A. English , PhD</p>
+                <p class="about">Helps students master grammar, vocabulary, and effective expression with confidence.</p>
+                <a href="path/to/om_prakash_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
+            </div>
+
+            <div class="faculty-card" data-subject="Hindi" data-name="Archana Triphathi">
+                <img src="images/Archana mam.webp" alt="Faculty Photo" />
+                <h3>Mrs. Archana Triphathi</h3>
+                <p><strong>Designation:</strong> Faculty</p>
+                <p><strong>📩</strong> ---- </p>
+                <p><strong>📞</strong> ---- </p>
+                <p><strong>Subject:</strong> Hindi</p>
+                <p><strong>Degree:</strong> ---- </p>
+                <p class="about">हिंदी भाषा और साहित्य को सरल व रोचक तरीके से समझाने के प्रति समर्पित।</p>
+                <a href="path/to/archana_triphathi_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
+            </div>
+
+            <div class="faculty-card" data-subject="Web Development" data-name="Jai Bardhan Kanth">
+                <img src="images/profile image.webp" alt="Faculty Photo" />
+                <h3>Mr. Jai Bardhan Kanth</h3>
+                <p><strong>Designation:</strong> Faculty</p>
+                <p><strong>📩</strong>jaibardhankanth@gmail.com</p>
+                <p><strong>📞</strong>9693216178</p>
+                <p><strong>Subject:</strong> Programming , IWD</p>
+                <p><strong>Degree:</strong> MCA</p>
+                <p class="about">Creative and enthusiastic about modern web technologies.</p>
+                <a href="path/to/jai_bardhan_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
+            </div>
+
+            <div class="faculty-card" data-subject="Mathematics" data-name="AQ Subhani">
+                <img src="images/Aq subhani.webp" alt="Faculty Photo" />
+                <h3>Dr. AQ Subhani</h3>
+                <p><strong>Designation:</strong> Faculty</p>
+                <p><strong>📩</strong> ---- </p>
+                <p><strong>📞</strong> ---- </p>
+                <p><strong>Subject:</strong> Mathematics</p>
+                <p><strong>Degree:</strong> MCA</p>
+                <p class="about">Creative and enthusiastic about modern web technologies.</p>
+                <a href="path/to/aq_subhani_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
+            </div>
+
+            <div class="faculty-card" data-subject="Programming" data-name="Himanshu Ojha">
+                <img src="images/Himanshu sir.webp" alt="Faculty Photo" />
+                <h3>Mr. Himanshu Ojha</h3>
+                <p><strong>Designation:</strong> Faculty</p>
+                <p><strong>📩</strong>himanshu@bca.ac.in</p>
+                <p><strong>📞</strong> ---- </p>
+                <p><strong>Subject:</strong> Programming</p>
+                <p><strong>Degree:</strong> PhD , MCA</p>
+                <p class="about">Dedicated to simplifying core programming concepts with real-world examples.</p>
+                <a href="path/to/himanshu_ojha_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
+            </div>
+
+                <div class="faculty-card" data-subject="Programming" data-name="Alok Narayan">
+                <img src="images/alok_narayan.jpeg" alt="Faculty Photo" />
+                <h3>Mr. Alok Narayan</h3>
+                <p><strong>Designation:</strong> Faculty</p>
+                <p><strong>📩</strong>aloknarayan@hotmail.com</p>
+                <p><strong>📞</strong>9916982195</p>
+                <p><strong>Subject:</strong> Programming , SQL</p>
+                <p><strong>Degree:</strong> B.Tech in CS</p>
+                <p class="about">Dedicated to simplifying core programming concepts with real-world examples.</p>
+                <a href="path/to/alok_narayan_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
+            </div>
+
+        </div>
     </div>
-
-    <div class="controls">
-        <input type="text" id="nameSearch" placeholder="Search by faculties name..." oninput="filterFaculty()" />
-      <select id="subjectFilter" onchange="filterFaculty()">
-        <option value="all">All Subjects</option>
-        <option value="Programming">Programming</option>
-        <option value="Data Structures">Data Structures</option>
-        <option value="Networking">Networking</option>
-        <option value="Database">Database</option>
-        <option value="Web Development">Web Development</option>
-         <option value="Mathematics">Mathematics</option>
-          <option value="Hindi">Hindi</option>
-           <option value="English">English</option>
-      </select>
-    </div>
-  
-    <div class="faculty-grid" id="facultyGrid">
-      <!-- Rest of the Faculty Cards -->
-      <div class="faculty-card" data-subject="Data Structures Database" data-name="Sanjeev Kumar">
-        <img src="images/Sanjeev_sir.webp" alt="Faculty Photo" />
-        <h3>Dr. Sanjeev Kumar Sinha</h3>
-        <p><strong>Designation:</strong>Faculty</p>
-        <p><strong>📩</strong>sanjeevsinhamca@gmail.com</p>
-        <p><strong>📞</strong> 9931917742</p>
-        <p><strong>Subject:</strong>DBMS / LINUX</p>
-        <p><strong>Degree:</strong> MCA</p>
-        <p class="about">Passionate about simplifying DBMS and Linux concepts through practical applications.</p>
-        <a href="path/to/sanjeev_kumar_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
-      </div>
-      <div class="faculty-card" data-subject="Networking" data-name="Amitesh Kumar">
-        <img src="images/Amitesh sir.webp" alt="Faculty Photo" />
-        <h3>Mr. Amitesh Kumar</h3>
-        <p><strong>Designation:</strong> Faculty</p>
-        <p><strong>📩</strong> ---- </p>
-        <p><strong>📞</strong> ---- </p>
-        <p><strong>Subject:</strong> BE </p>
-        <p><strong>Degree:</strong> Phd , M.Tech </p>
-        <p class="about">Helps students to inspiring educational excellence and professional growth in students.</p>
-        <a href="path/to/amitesh_kumar_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
-      </div>
-      <div class="faculty-card" data-subject="Mathematics" data-name="Manoj Kumar">
-        <img src="images/Manoj_sir.webp" alt="Faculty Photo" />
-        <h3>Mr. Manoj Kumar Yadav</h3>
-        <p><strong>Designation:</strong> Faculty</p>
-        <p><strong>📩</strong> ---- </p>
-        <p><strong>📞</strong> ---- </p>
-        <p><strong>Subject:</strong> Mathematics</p>
-        <p><strong>Degree:</strong> M.sc. Mathematics </p>
-        <p class="about">Helps students to inspiring logical thinking and confidence in mathematics.</p>
-        <a href="path/to/manoj_kumar_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
-      </div>
-      <div class="faculty-card" data-subject="English" data-name="Om Prakash Yadav">
-        <img src="images/Op yadav.webp" alt="Faculty Photo" />
-        <h3>Dr. Om Prakash Yadav</h3>
-        <p><strong>Designation:</strong> Faculty</p>
-        <p><strong>📩</strong> omprakash511972@gmail.com</p>
-        <p><strong>📞</strong> ---- </p>
-        <p><strong>Subject:</strong> English</p>
-        <p><strong>Degree:</strong> M.A. English , PhD</p>
-        <p class="about">Helps students master grammar, vocabulary, and effective expression with confidence.</p>
-        <a href="path/to/om_prakash_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
-      </div>
-
-      <div class="faculty-card" data-subject="Hindi" data-name="Archana Triphathi">
-        <img src="images/Archana mam.webp" alt="Faculty Photo" />
-        <h3>Mrs. Archana Triphathi</h3>
-        <p><strong>Designation:</strong> Faculty</p>
-        <p><strong>📩</strong> ---- </p>
-        <p><strong>📞</strong> ---- </p>
-        <p><strong>Subject:</strong> Hindi</p>
-        <p><strong>Degree:</strong> ---- </p>
-        <p class="about">हिंदी भाषा और साहित्य को सरल व रोचक तरीके से समझाने के प्रति समर्पित।</p>
-        <a href="path/to/archana_triphathi_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
-      </div>
-
-      <div class="faculty-card" data-subject="Web Development" data-name="Jai Bardhan Kanth">
-        <img src="images/profile image.webp" alt="Faculty Photo" />
-        <h3>Mr. Jai Bardhan Kanth</h3>
-        <p><strong>Designation:</strong> Faculty</p>
-        <p><strong>📩</strong> ---- </p>
-        <p><strong>📞</strong> ---- </p>
-        <p><strong>Subject:</strong> Programming , IWD</p>
-        <p><strong>Degree:</strong> MCA</p>
-        <p class="about">Creative and enthusiastic about modern web technologies.</p>
-        <a href="path/to/jai_bardhan_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
-      </div>
-
-      <div class="faculty-card" data-subject="Mathematics" data-name="AQ Subhani">
-        <img src="images/Aq subhani.webp" alt="Faculty Photo" />
-        <h3>Dr. AQ Subhani</h3>
-        <p><strong>Designation:</strong> Faculty</p>
-        <p><strong>📩</strong> ---- </p>
-        <p><strong>📞</strong> ---- </p>
-        <p><strong>Subject:</strong> Mathematics</p>
-        <p><strong>Degree:</strong> MCA</p>
-        <p class="about">Creative and enthusiastic about modern web technologies.</p>
-        <a href="path/to/aq_subhani_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
-      </div>
-
-      <div class="faculty-card" data-subject="Programming" data-name="Himanshu Ojha">
-        <img src="images/Himanshu sir.webp" alt="Faculty Photo" />
-        <h3>Mr. Himanshu Ojha</h3>
-        <p><strong>Designation:</strong> Faculty</p>
-        <p><strong>📩</strong>himanshu@bca.ac.in</p>
-        <p><strong>📞</strong> ---- </p>
-        <p><strong>Subject:</strong> Programming</p>
-        <p><strong>Degree:</strong> PhD , MCA</p>
-        <p class="about">Dedicated to simplifying core programming concepts with real-world examples.</p>
-        <a href="path/to/himanshu_ojha_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
-      </div>
-
-    </div>
-</div>
 </div>
 <!-- Main Section closed -->
 
