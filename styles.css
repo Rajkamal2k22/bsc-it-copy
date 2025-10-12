@@ -1079,16 +1079,20 @@ padding: 6rem  0rem;
       }
 
       .secondBox ul li , .thirdBox ul li{
-        line-height: 2rem;
+        line-height: 1.5rem;
         color: white;
         font-size: 1rem;
-        font-weight: 600;
-         list-style: none;
+        font-weight: 400;
+        list-style: none;
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 0.7rem;
       }
 
-      #footerlocationIcon{
-        margin-right: 5px;
+      .footercontactIcon{
+        margin-right: 8px;
         font-size: 1.4rem;
+        flex-shrink: 0;
       }
 
       .thirdBox a{
@@ -1112,7 +1116,7 @@ padding: 6rem  0rem;
        justify-content: space-evenly;
        color: white;
        font-size: 1.1rem;
-       font-weight: 800;
+       font-weight: 100;
        padding: 1rem;
        gap:10px;
       }
