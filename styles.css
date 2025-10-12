@@ -1137,11 +1137,16 @@ padding: 6rem  0rem;
       }
 
       @media screen and (max-width:660px) {
-        .belowFooter{
-         font-size: 0.7rem;
-         padding: 0.5rem;
+       
+  .belowFooter {
+    font-size: 0.7rem;
+    padding: 0.5rem 0.8rem;
+    margin: 0;
+    padding-left: calc(env(safe-area-inset-left) + 0.8rem);
+    padding-right: calc(env(safe-area-inset-right) + 0.8rem);
+    box-sizing: border-box;
+  }
 
-        }
 
         #creditName{
           margin-left:0.2rem;
@@ -1152,11 +1157,16 @@ padding: 6rem  0rem;
         }
 
         .footerBox{
-          width: 95%;
+          width: 100%;
+        }
+
+        .mainFooter{
+          padding:1rem;
         }
 
          .footerBox{
-               grid-template-columns: repeat(auto-fit,minmax(300px,500px));
+               grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+               padding: 0rem;
            }
         
       }
