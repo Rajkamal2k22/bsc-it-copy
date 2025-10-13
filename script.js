@@ -533,20 +533,55 @@ card.style.display = matchesSubject && matchesName ? "flex" : "none";
 }
 
 //Hamburger code started
-
 const hamBurger = document.querySelector('.hamBurger');
 const navLinks = document.querySelector('.nav-links');
+const dropdowns = document.querySelectorAll('.dropdown');
 
-
+// Toggle hamburger menu and animate icon
 hamBurger.addEventListener('click', (e) => {
-  e.stopPropagation(); 
+  e.stopPropagation();
   navLinks.classList.toggle('active');
+  hamBurger.classList.toggle('active'); // Toggle active class on hamburger for animation
 });
 
+// Close menu when clicking outside
 document.addEventListener('click', (e) => {
   if (!navLinks.contains(e.target) && !hamBurger.contains(e.target)) {
     navLinks.classList.remove('active');
+    hamBurger.classList.remove('active'); // Remove active class from hamburger
+    // Also close any open dropdowns when menu is closed
+    dropdowns.forEach(dropdown => dropdown.classList.remove('active'));
   }
+});
+
+// Toggle dropdowns on click for mobile
+dropdowns.forEach(dropdown => {
+  dropdown.addEventListener('click', (e) => {
+    // Only toggle if the nav menu is active (i.e., on mobile)
+    if (navLinks.classList.contains('active')) {
+      e.stopPropagation(); // Prevent document click listener from closing immediately
+      dropdown.classList.toggle('active');
+
+      // Close other dropdowns if open
+      dropdowns.forEach(otherDropdown => {
+        if (otherDropdown !== dropdown) {
+          otherDropdown.classList.remove('active');
+        }
+      });
+    }
+  });
+});
+
+// Close menu when a navigation link is clicked (for better UX on mobile)
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    // Only close if it's not a dropdown toggle
+    if (!link.classList.contains('drop-btn')) {
+      navLinks.classList.remove('active');
+      hamBurger.classList.remove('active');
+      dropdowns.forEach(dropdown => dropdown.classList.remove('active')); // Close dropdowns too
+    }
+  });
 });
 
 //Hamburger code ended

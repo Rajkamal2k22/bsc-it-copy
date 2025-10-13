@@ -726,142 +726,214 @@
   
 
 
-  /* Navbar css started */
-  .navbar {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #8267c7e1;
-    padding: 10px 20px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    transition: top 0.4s ease;
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-  }
+ /* Navbar css started */
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #8267c7e1;
+  padding: 10px 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: top 0.4s ease;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
 
-  .logo{
-    font-size: 2rem;
-    font-weight: 900;
-  }
-  
-
-  .logo a{
-    text-decoration: none;
-    color: white;
-  }
-  .nav-links {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-  }
-  
-  .nav-links li {
-    position: relative;
-  }
-  
-  .nav-links a {
-    text-decoration: none;
-    padding: 0px 15px;
-    display: block;
-    color: white;
-    font-size: 1.1rem;
-    transition: 0.3s;
-  }
-  
-  .nav-links a:hover {
-    color: rgba(251, 102, 15, 0.971);
-    border-radius: 5px;
-  }
-
-  #about,#Academics{
-     background:none; 
-  }
-
-  .dropdown{
-    position: relative;    
-  }
-  
-  .dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: #ffffff;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    min-width: 180px;
-  }
-  
-  .dropdown-menu li {
-    display: block;
-  }
-  
-  .dropdown-menu a {
-    padding: 10px;
-    color: #333;
-    white-space: nowrap;
-  }
-
-  .dropdown a:hover{
-    background: #d9d3b7;
-  }
-  
-  
-  .dropdown:hover .dropdown-menu {
-    display: block;
-  }
-
-  .hamBurger span{
-      height: 3px;
-      width: 40px;
-      background: white;
-      margin: 4px 0;
-      border-radius: 5px;
+.logo {
+  font-size: 2rem;
+  font-weight: 900;
 }
 
 
-  @media screen and (max-width:660px) {
-    .hamBurger{
-        display: flex;
-        flex-direction: column;
-      }
-      .nav-links{
-        display: none;
-        position: absolute;
-        top:60px;
-        right: 20px;
-        background: #ffffffda;
-        flex-direction: column;
-        width: 150px;
-        padding:10px 10px;
-        gap: 10px;;
-        border-radius: 5px;
-      }
-      .nav-links li a{
-        color: black;
-      }
+.logo a {
+  text-decoration: none;
+  color: white;
+}
 
-      .dropdown-menu{
-        position: relative;
-        background:#ffffff;
-      } 
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  transition: transform 0.3s ease-in-out; /* Add transition for smooth movement */
+}
 
-      .nav-links.active {
-        display: flex;
-      }
+.nav-links li {
+  position: relative;
+}
 
-  }
+.nav-links a {
+  text-decoration: none;
+  padding: 0px 15px;
+  display: block;
+  color: white;
+  font-size: 1.1rem;
+  transition: 0.3s;
+}
 
-  @media screen and (max-width:900px) {
-  a.whatsappLink ,a.gmailLink1, a.requestCallLink{
+.nav-links a:hover {
+  color: rgba(251, 102, 15, 0.971);
+  border-radius: 5px;
+}
+
+#about,
+#Academics {
+  background: none;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 180px;
+  z-index: 1001; /* Ensure dropdown is above other content */
+}
+
+.dropdown-menu li {
+  display: block;
+}
+
+.dropdown-menu a {
+  padding: 10px;
+  color: #333;
+  white-space: nowrap;
+}
+
+.dropdown a:hover {
+  background: #d9d3b7;
+}
+
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.hamBurger {
+  display: none; /* Hide by default on larger screens */
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamBurger span {
+  height: 3px;
+  width: 30px; /* Make hamburger lines slightly shorter */
+  background: white;
+  margin: 4px 0;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out; /* Smooth transition for icon animation */
+}
+
+/* Hamburger active state animation */
+.hamBurger.active span:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamBurger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamBurger.active span:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+
+@media screen and (max-width:900px) {
+  /* Hide contact links on smaller screens */
+  a.whatsappLink,
+  a.gmailLink1,
+  a.requestCallLink {
     display: none;
   }
+
+  .hamBurger {
+    display: flex; /* Show hamburger on smaller screens */
   }
 
-  /* Navbar css ended */
+  .nav-links {
+    display: flex; /* Hide nav links by default */
+    position: fixed; /* Use fixed for better responsiveness */
+    top: 60px; /* Position below the navbar */
+    right:0; /* Start off-screen */
+    background: #ffffffda;
+    flex-direction: column;
+    width: 200px; /* Slightly wider menu */
+    padding: 20px 10px;
+    gap: 15px; /* More space between items */
+    border-radius: 5px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateX(100%); /* Reset transform for animation */
+     transition: transform 0.3s ease-in-out; /* Keep the transition */
+    visibility: hidden; /* Hide it completely when not active */
+    opacity: 0; /* Fade it out */
+   
+  }
 
+  .nav-links.active {
+   transform: translateX(0); /* Slide fully into view */
+    visibility: visible; /* Make it visible */
+    opacity: 1; /* Fade it in */
+  }
+
+  .nav-links li a {
+    color: black;
+    padding: 10px; /* Add padding to menu items */
+    border-bottom: 1px solid #eee; /* Separator for clarity */
+  }
+
+  .nav-links li:last-child a {
+    border-bottom: none;
+  }
+
+  .dropdown-menu {
+    position: static; /* Stack dropdown items vertically in mobile */
+    background: #f8f8f8; /* Slightly different background for sub-menu */
+    box-shadow: none;
+    padding-left: 15px; /* Indent sub-menu items */
+    width: 100%; /* Take full width of parent */
+    border-top: 1px solid #eee;
+  }
+
+  .dropdown-menu a {
+    color: #555; /* Darker color for sub-menu items */
+  }
+
+  /* Show dropdown menu when parent is hovered/focused even in mobile */
+  .dropdown:hover .dropdown-menu,
+  .dropdown.active .dropdown-menu { /* Add .active for mobile dropdown */
+    display: block;
+  }
+
+  /* For dropdown to open on click/tap in mobile */
+  .drop-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .drop-btn::after {
+    content: '';
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+  }
+
+  .dropdown.active .drop-btn::after {
+    transform: rotate(180deg);
+  }
+
+}
+
+
+/* Navbar css ended */
 
 
   /* Actually this css is for contactUs earlier i made it for callback form but now  changed it to contact us page css. So i haven't change the name of the class or id. */
