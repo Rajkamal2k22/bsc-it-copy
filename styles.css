@@ -1608,13 +1608,13 @@ th, td {
 /* Placed Students section Ended */
 
 
+/* Faculties css section started */
 
-/* General Body and Main Container Styles */
 .facultiesBody {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 30px 20px;
-    background-color: #f8f9fa; /* Light background for the whole section */
+    background-color: #f8f9fa; 
     animation: fadeInPage 1.2s ease-in;
 }
 
@@ -1623,7 +1623,7 @@ th, td {
     margin-bottom: 40px;
     font-size: 2.5rem;
     font-weight: 700;
-    color: #2c3e50; /* Darker heading color */
+    color: #2c3e50; 
     text-shadow: 1px 1px 2px rgba(0,0,0,0.08);
 }
 
@@ -1631,11 +1631,11 @@ th, td {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 1200px; /* Constrain width for better readability */
-    margin: 0 auto; /* Center the whole wrapFaculties container */
+    max-width: 1200px; 
+    margin: 0 auto; 
 }
 
-/* Controls Section Styles */
+
 .controls {
     display: flex;
     flex-wrap: wrap;
@@ -1644,16 +1644,16 @@ th, td {
     margin-bottom: 50px;
     width: 100%;
     animation: fadeInUp 0.8s ease forwards;
-    animation-delay: 0.2s; /* Delay controls animation slightly */
+    animation-delay: 0.2s;
 }
 
 #nameSearch,
 #subjectFilter {
     padding: 12px 18px;
     font-size: 17px;
-    border-radius: 30px; /* Pill shape */
+    border-radius: 30px; 
     border: 1px solid #ced4da;
-    width: 280px; /* Wider input fields */
+    width: 280px; 
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     transition: all 0.3s ease;
     background-color: #fff;
@@ -1662,27 +1662,27 @@ th, td {
 
 #nameSearch:focus,
 #subjectFilter:focus {
-    border-color: #007bff; /* Highlight on focus */
+    border-color: #007bff; 
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
     outline: none;
 }
 
-/* Faculty Grid Styles */
+
 .faculty-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 30px; /* Increased gap */
+    gap: 30px; 
     width: 100%;
 }
 
-/* Base Faculty Card Styles */
+
 .faculty-card {
-    background: #ffffff; /* Clean white background */
+    background: #ffffff; 
     border-radius: 16px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     padding: 25px;
-    width: 290px; /* Standard width for regular cards */
+    width: 290px; 
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     opacity: 0;
@@ -1692,12 +1692,12 @@ th, td {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid #e9ecef; /* Subtle border */
-    position: relative; /* Needed for ribbon */
+    border: 1px solid #e9ecef; 
+    position: relative; 
 }
 
 .faculty-card:hover {
-    transform: translateY(-5px) scale(1.02); /* Lift and slightly scale */
+    transform: translateY(-5px) scale(1.02); 
     box-shadow: 0 12px 28px rgba(0,0,0,0.15);
     cursor: pointer;
 }
@@ -1708,7 +1708,7 @@ th, td {
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 15px;
-    border: 4px solid #7cb5ec; /* A pleasant blue border for regular faculty */
+    border: 4px solid #7cb5ec; 
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
@@ -1730,12 +1730,12 @@ th, td {
     font-weight: 500;
 }
 
-/* Consistent color for details in regular faculty cards */
-.faculty-card p:nth-child(3) strong { color: #e74c3c; } /* Red for designation */
-.faculty-card p:nth-child(4) strong { color: #f39c12; } /* Orange for email */
-.faculty-card p:nth-child(5) strong { color: #2ecc71; } /* Green for phone */
-.faculty-card p:nth-child(6) strong { color: #8e44ad; } /* Purple for subject */
-.faculty-card p:nth-child(7) strong { color: #34495e; } /* Dark blue for degree */
+
+.faculty-card p:nth-child(3) strong { color: #e74c3c; } 
+.faculty-card p:nth-child(4) strong { color: #f39c12; } 
+.faculty-card p:nth-child(5) strong { color: #2ecc71; } 
+.faculty-card p:nth-child(6) strong { color: #8e44ad; } 
+.faculty-card p:nth-child(7) strong { color: #34495e; } 
 
 .faculty-card .about {
     font-style: italic;
@@ -1745,56 +1745,55 @@ th, td {
     line-height: 1.5;
 }
 
-/* Coordinator Card Specific Styles - More Prominent and Professional */
+
 .coordinator-first {
-    order: -1; /* This makes it appear first in the flex container */
-    background: linear-gradient(145deg, #1a4f66, #2d7088); /* Deep, professional blue gradient */
+    order: -1; 
+    background: linear-gradient(145deg, #1a4f66, #2d7088); 
     color: #fff;
     border-radius: 18px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35); /* More pronounced shadow */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
     padding: 30px 25px;
-    width: 380px; /* Wider than regular cards */
+    width: 380px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 3px solid rgba(255, 255, 255, 0.6); /* Thicker white border */
-    animation-delay: 0s !important; /* Ensure coordinator animates first */
-    position: relative; /* Ensure position context for the ribbon */
-    overflow: hidden; /* Crucial to clip the ribbon nicely */
+    animation-delay: 0s !important; 
+    position: relative; 
+    overflow: hidden; 
 }
 
 .coordinator-first::before {
     content: 'Coordinator';
     position: absolute;
-    top: 18px;    /* Adjusted top position */
-    left: -40px;  /* Adjusted left position to make it peek more */
-    background-color: #ffcc00; /* Vibrant yellow */
+    top: 18px;    
+    left: -40px;  
+    background-color: #ffcc00; 
     color: #2c3e50;
-    padding: 6px 45px; /* Increased padding for a bolder look */
-    font-size: 0.95rem; /* Slightly larger text */
+    padding: 6px 45px; 
+    font-size: 0.95rem; 
     font-weight: bold;
     letter-spacing: 1px;
-    transform: rotate(-45deg); /* Retain the iconic ribbon rotation */
+    transform: rotate(-45deg); 
     transform-origin: 0% 100%;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.3); /* Stronger shadow for depth */
-    z-index: 10; /* Ensure it's above other content */
-    border-bottom: 2px solid rgba(0,0,0,0.1); /* Subtle bottom border for definition */
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3); 
+    z-index: 10; 
+    border-bottom: 2px solid rgba(0,0,0,0.1); 
 }
 
 
 .coordinator-first:hover {
-    transform: translateY(-10px) scale(1.03); /* Lifts even more */
+    transform: translateY(-10px) scale(1.03); 
     box-shadow: 0 22px 45px rgba(0, 0, 0, 0.45);
 }
 
 .coordinator-first h3 {
     color: #fff;
-    font-size: 28px; /* Larger name */
+    font-size: 28px; 
     font-weight: bold;
     margin-bottom: 10px;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
 .coordinator-first p {
-    color: #e0f2f7; /* Lighter text for contrast */
+    color: #e0f2f7; 
     font-size: 16px;
     margin: 5px 0;
 }
@@ -1805,20 +1804,20 @@ th, td {
 }
 
 .coordinator-first img {
-    width: 140px; /* Larger image */
+    width: 140px; 
     height: 140px;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 20px;
-    border: 5px solid #ecf0f1; /* White border for coordinator image */
+    border: 5px solid #ecf0f1; 
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* CV Download Link Styles */
+
 .download-cv {
     display: inline-flex;
     align-items: center;
-    background-color: #007bff; /* Primary blue for download button */
+    background-color: #007bff; 
     color: #fff;
     padding: 10px 20px;
     border-radius: 25px;
@@ -1830,7 +1829,7 @@ th, td {
 }
 
 .download-cv:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3; 
     transform: translateY(-3px);
     box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4);
 }
@@ -1840,7 +1839,7 @@ th, td {
     font-size: 18px;
 }
 
-/* Animations */
+
 @keyframes fadeInPage {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -1864,7 +1863,7 @@ th, td {
     }
 }
 
-/* Animation delays for faculty cards (excluding coordinator) */
+
 .faculty-grid .faculty-card:not(.coordinator-first):nth-child(1) { animation-delay: 0.3s; }
 .faculty-grid .faculty-card:not(.coordinator-first):nth-child(2) { animation-delay: 0.4s; }
 .faculty-grid .faculty-card:not(.coordinator-first):nth-child(3) { animation-delay: 0.5s; }
@@ -1875,12 +1874,12 @@ th, td {
 .faculty-grid .faculty-card:not(.coordinator-first):nth-child(8) { animation-delay: 1.0s; }
 
 
-/* Responsive Adjustments */
+
 @media (max-width: 992px) {
     #facultiesh1 {
         font-size: 2rem;
     }
-    .coordinator-first { /* Use coordinator-first for specific styles */
+    .coordinator-first { 
         width: 320px;
         padding: 25px 20px;
     }
@@ -1903,7 +1902,7 @@ th, td {
         width: 80%;
         max-width: 300px;
     }
-    .coordinator-first { /* Use coordinator-first for specific styles */
+    .coordinator-first { 
         width: 90%;
         max-width: 350px;
         padding: 20px 15px;
@@ -1928,7 +1927,7 @@ th, td {
     .facultiesBody {
         padding: 20px 10px;
     }
-    .coordinator-first { /* Use coordinator-first for specific styles */
+    .coordinator-first { 
         padding: 15px 10px;
         width: 100%;
         font-size: 0.9rem;
@@ -2022,7 +2021,7 @@ th, td {
 
     .gal-gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 40px;
       margin-bottom: 40px;
       max-width: 80%;
