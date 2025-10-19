@@ -1,9 +1,24 @@
-window.addEventListener('load', function() {
+ const preloader = document.getElementById('preloader');
+    const loadingPercentage = document.getElementById('loadingPercentage');
+    const slideBar = document.getElementById('slideBar');
+    let percentage = 0;
 
-const preloader = document.getElementById('preloader');
-        
-    preloader.style.display = 'none';
-    });
+    // Simulate loading progress
+    const interval = setInterval(() => {
+        percentage += Math.floor(Math.random() * 5) + 1; // Increase by a smaller random amount for smoother bar
+        if (percentage >= 100) {
+            percentage = 100;
+            clearInterval(interval);
+            // Once 100%, fade out the preloader
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Restore body scrollbar
+            }, 500); // Matches the CSS transition duration
+        }
+        loadingPercentage.textContent = `${percentage}%`;
+        slideBar.style.width = `${percentage}%`; // Update the slide bar width
+    }, 100); // Update every 100 milliseconds
 
    
     //Notification Bar Logic  started

@@ -24,34 +24,74 @@
 
 /*Preloader css */
 
-  #preloader {
-    position: fixed; 
+#preloader {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #353333; 
-    z-index: 9999; 
+    background-color: #353333;
+    z-index: 9999;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: opacity 0.5s ease-out;
+    flex-direction: column; /* To stack content vertically */
 }
 
-.preloaderText{
-  font-size: 2rem;
-  font-weight: 1000;
-  color: white;
-  animation: fadeIn 0.7s ease-in-out;
+.preloaderContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
-@keyframes fadeIn {
-        from {
-            opacity: 0; 
-        }
-        to {
-            opacity: 1; 
-        }
-    }
+.preloaderText {
+    font-size: 3rem; /* Larger for B.Sc IT */
+    font-weight: 1000;
+    color: white;
+    margin-bottom: 20px; /* Space between B.Sc IT and percentage */
+    letter-spacing: 0.1em; /* Spacing for animation */
+    overflow: hidden; /* For typing effect */
+    white-space: nowrap; /* Prevent wrap */
+    border-right: 0.15em solid orange; /* Cursor effect */
+    animation: typing 3.5s steps(10, end) forwards, blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange }
+}
+
+.loadingPercentageContainer {
+    font-size: 2rem;
+    font-weight: 1000;
+    color: white;
+    margin-bottom: 15px; /* Space between percentage and slide bar */
+}
+
+.slideBarContainer {
+    width: 250px; /* Width of the entire bar container */
+    height: 10px;
+    background-color: #555;
+    border-radius: 5px;
+    overflow: hidden; /* Ensures the inner bar stays within bounds */
+}
+
+#slideBar {
+    width: 0%;
+    height: 100%;
+    background-color: orange; /* Color of the progress bar */
+    border-radius: 5px;
+    transition: width 0.1s linear; /* Smooth transition for the bar filling */
+}
+
+
 
 /* Preloader css ended */
 
@@ -723,6 +763,10 @@
   #linkedin{
        color: rgb(3, 66, 118);
   }
+
+  .bx{
+    font-size: 1.7rem;
+  }
   
 
 
@@ -1161,9 +1205,11 @@ padding: 6rem  0rem;
       }
 
       .footercontactIcon{
+        display: flex;
+        align-items: flex-start; /* aligns icon with top of text */
+        gap: 0.5rem; 
         margin-right: 8px;
         font-size: 1.4rem;
-        flex-shrink: 0;
         text-decoration: none;
         color: white;
         font-size: 1rem;
