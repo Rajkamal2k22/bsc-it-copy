@@ -533,6 +533,7 @@ card.style.display = matchesSubject && matchesName ? "flex" : "none";
 }
 
 //Hamburger code started
+//Hamburger code started
 const hamBurger = document.querySelector('.hamBurger');
 const navLinks = document.querySelector('.nav-links');
 const dropdowns = document.querySelectorAll('.dropdown');
@@ -554,28 +555,38 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Toggle dropdowns on click for mobile
+// --- REVISED DROPDOWN TOGGLE LOGIC for mobile ---
+// --- FIXED DROPDOWN TOGGLE LOGIC for mobile ---
 dropdowns.forEach(dropdown => {
-  dropdown.addEventListener('click', (e) => {
-    // Only toggle if the nav menu is active (i.e., on mobile)
-    if (navLinks.classList.contains('active')) {
-      e.stopPropagation(); // Prevent document click listener from closing immediately
-      dropdown.classList.toggle('active');
+  const dropBtn = dropdown.querySelector('.drop-btn');
 
-      // Close other dropdowns if open
-      dropdowns.forEach(otherDropdown => {
-        if (otherDropdown !== dropdown) {
-          otherDropdown.classList.remove('active');
+  if (dropBtn) {
+    dropBtn.addEventListener('click', (e) => {
+      if (navLinks.classList.contains('active')) {
+        e.stopPropagation();
+
+        // Check if the clicked dropdown is already active
+        const isActive = dropdown.classList.contains('active');
+
+        // Close all dropdowns first
+        dropdowns.forEach(d => d.classList.remove('active'));
+
+        // If it was not active earlier, open it
+        if (!isActive) {
+          dropdown.classList.add('active');
         }
-      });
-    }
-  });
+      }
+    });
+  }
 });
+// --- END FIXED DROPDOWN TOGGLE LOGIC ---
+
+// --- END REVISED DROPDOWN TOGGLE LOGIC ---
 
 // Close menu when a navigation link is clicked (for better UX on mobile)
 navLinks.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
-    // Only close if it's not a dropdown toggle
+    // Only close if it's not a dropdown toggle button
     if (!link.classList.contains('drop-btn')) {
       navLinks.classList.remove('active');
       hamBurger.classList.remove('active');
@@ -583,6 +594,7 @@ navLinks.querySelectorAll('a').forEach(link => {
     }
   });
 });
+
 
 //Hamburger code ended
 

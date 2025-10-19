@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
     h2{
       font-size: 1.2rem;
       font-weight: 800;
@@ -907,7 +908,6 @@
   }
 
   /* Show dropdown menu when parent is hovered/focused even in mobile */
-  .dropdown:hover .dropdown-menu,
   .dropdown.active .dropdown-menu { /* Add .active for mobile dropdown */
     display: block;
   }
