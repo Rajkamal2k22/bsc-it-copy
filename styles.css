@@ -59,10 +59,9 @@
   .colorFiller{
     width: 100vw;
     height: 53px;
-    background-image: linear-gradient(110deg,#e0b97f,rgb(255, 255, 255),#a2eeb8); 
-    
+    background-color: #ffcc00ec;
+    animation: blink 1.5s infinite;
   }
-
 
 
                              /* Hompage main section started */
@@ -1165,6 +1164,10 @@ padding: 6rem  0rem;
         margin-right: 8px;
         font-size: 1.4rem;
         flex-shrink: 0;
+        text-decoration: none;
+        color: white;
+        font-size: 1rem;
+
       }
 
       .thirdBox a{
