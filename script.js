@@ -1,25 +1,14 @@
  const preloader = document.getElementById('preloader');
-    const loadingPercentage = document.getElementById('loadingPercentage');
-    const slideBar = document.getElementById('slideBar');
-    let percentage = 0;
 
-    // Simulate loading progress
-    const interval = setInterval(() => {
-        percentage += Math.floor(Math.random() * 5) + 1; // Increase by a smaller random amount for smoother bar
-        if (percentage >= 100) {
-            percentage = 100;
-            clearInterval(interval);
-            // Once 100%, fade out the preloader
-            preloader.style.opacity = '0';
-            setTimeout(() => {
-                preloader.style.display = 'none';
-                document.body.style.overflow = 'auto'; // Restore body scrollbar
-            }, 500); // Matches the CSS transition duration
-        }
-        loadingPercentage.textContent = `${percentage}%`;
-        slideBar.style.width = `${percentage}%`; // Update the slide bar width
-    }, 100); // Update every 100 milliseconds
-
+// As soon as the DOM is ready, fade out the preloader
+// This is typically very fast, making the preloader appear for a minimal time.
+document.addEventListener('DOMContentLoaded', () => {
+    preloader.style.opacity = '0';
+    setTimeout(() => {
+        preloader.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore body scrollbar
+    }, 500); // Matches the CSS transition duration for a smooth fade
+});
    
     //Notification Bar Logic  started
 
@@ -223,73 +212,135 @@ document.addEventListener('DOMContentLoaded', function() {
 
      //main page slider image logic started
 
-
 const studentSliderContainer = document.querySelector('.slider');
 const studentSliderImages = document.querySelectorAll('.slider img');
 const studentSliderDots = document.querySelectorAll('.sliderNav .dot');
 const prevStudentSlideBtn = document.getElementById('prevStudentSlide');
 const nextStudentSlideBtn = document.getElementById('nextStudentSlide');
 
-let currentStudentSlideIndex = 0;
-const studentSlideIntervalTime = 3000; 
+const numRealSlides = studentSliderDots.length; // Correctly 3 based on your HTML
+
+let currentRealSlideIndex = 0; // Tracks the index of the *real* slide (0 to numRealSlides - 1)
+const studentSlideIntervalTime = 3000;
+const scrollTransitionDuration = 300; // Matches your CSS scroll-behavior: smooth transition duration
 
 let autoStudentSlideInterval;
 
-function showStudentSlide(index) {
-
-    if (index >= studentSliderImages.length) {
-        currentStudentSlideIndex = 0; 
-    } else if (index < 0) {
-        currentStudentSlideIndex = studentSliderImages.length - 1; 
-    } else {
-        currentStudentSlideIndex = index;
-    }
-
-    studentSliderContainer.scrollLeft = studentSliderImages[currentStudentSlideIndex].offsetLeft;
-
+function updateDotActiveState(realIndex) {
     studentSliderDots.forEach((dot, i) => {
-        if (i === currentStudentSlideIndex) {
-            dot.classList.add('active'); 
+        if (i === realIndex) {
+            dot.classList.add('active');
         } else {
-            dot.classList.remove('active'); 
+            dot.classList.remove('active');
         }
     });
 }
 
+function showStudentSlide(realIndex, smoothScroll = true) {
+    let targetImageIndex = realIndex + 1; // Account for the prepended clone
+
+    if (smoothScroll) {
+        studentSliderContainer.style.scrollBehavior = 'smooth';
+    } else {
+        studentSliderContainer.style.scrollBehavior = 'auto'; // Instant jump
+    }
+
+    studentSliderContainer.scrollLeft = studentSliderImages[targetImageIndex].offsetLeft;
+    currentRealSlideIndex = realIndex;
+    updateDotActiveState(realIndex);
+}
+
 function nextStudentSlide() {
-    showStudentSlide(currentStudentSlideIndex + 1);
+    let targetRealIndex = currentRealSlideIndex + 1;
+    // This scrolls to the next image in the DOM, including the final clone.
+    let targetImageDomIndexToScroll = currentRealSlideIndex + 1 + 1;
+
+    studentSliderContainer.style.scrollBehavior = 'smooth';
+    studentSliderContainer.scrollLeft = studentSliderImages[targetImageDomIndexToScroll].offsetLeft;
+
+    if (targetRealIndex >= numRealSlides) {
+        // If we just smoothly scrolled to the appended clone (which looks like the 1st slide)
+        currentRealSlideIndex = 0; // Conceptually, we're now on the first real slide
+        updateDotActiveState(0); // Update dot immediately to prevent flickering
+
+        setTimeout(() => {
+            // After the smooth scroll finishes, instantly jump to the first *real* slide's position.
+            studentSliderContainer.style.scrollBehavior = 'auto';
+
+            // Instead of .offsetLeft, for the jump to the very first *real* slide,
+            // we can scroll to the position of studentSliderImages[1].
+            // Or, more robustly, if the slider is always full width, scroll to the width of one image.
+            studentSliderContainer.scrollLeft = studentSliderImages[1].offsetLeft; // This is the start of the first REAL slide (DOM index 1)
+
+            // Re-enable smooth scroll immediately after the jump
+            studentSliderContainer.style.scrollBehavior = 'smooth';
+        }, scrollTransitionDuration);
+    } else {
+        currentRealSlideIndex = targetRealIndex;
+        updateDotActiveState(targetRealIndex);
+    }
 }
 
 function prevStudentSlide() {
-    showStudentSlide(currentStudentSlideIndex - 1);
+    let targetRealIndex = currentRealSlideIndex - 1;
+    // This scrolls to the previous image in the DOM, including the initial clone.
+    let targetImageDomIndexToScroll = currentRealSlideIndex + 1 - 1;
+
+    studentSliderContainer.style.scrollBehavior = 'smooth';
+    studentSliderContainer.scrollLeft = studentSliderImages[targetImageDomIndexToScroll].offsetLeft;
+
+    if (targetRealIndex < 0) {
+        // If we just smoothly scrolled to the prepended clone (which looks like the last slide)
+        currentRealSlideIndex = numRealSlides - 1; // Conceptually, we're now on the last real slide
+        updateDotActiveState(numRealSlides - 1); // Update dot immediately
+
+        setTimeout(() => {
+            // After the smooth scroll finishes, instantly jump to the last *real* slide's position.
+            studentSliderContainer.style.scrollBehavior = 'auto';
+
+            // For the jump to the very last *real* slide, scroll to its offsetLeft.
+            studentSliderContainer.scrollLeft = studentSliderImages[numRealSlides].offsetLeft; // This is the start of the last REAL slide (DOM index 3)
+
+            // Re-enable smooth scroll immediately after the jump
+            studentSliderContainer.style.scrollBehavior = 'smooth';
+        }, scrollTransitionDuration);
+    } else {
+        currentRealSlideIndex = targetRealIndex;
+        updateDotActiveState(targetRealIndex);
+    }
 }
 
 function startAutoSlide() {
-    clearInterval(autoStudentSlideInterval); 
+    clearInterval(autoStudentSlideInterval);
     autoStudentSlideInterval = setInterval(nextStudentSlide, studentSlideIntervalTime);
 }
 
-
+// Event Listeners for dots
 studentSliderDots.forEach((dot, index) => {
     dot.addEventListener('click', () => {
-        const targetIndex = parseInt(dot.dataset.slideIndex);
-        showStudentSlide(targetIndex);
-        startAutoSlide(); 
+        showStudentSlide(index); // Directly show the real slide index, with smooth scroll
+        startAutoSlide();
     });
 });
 
+// Event Listeners for arrows
 prevStudentSlideBtn.addEventListener('click', () => {
     prevStudentSlide();
-    startAutoSlide(); 
+    startAutoSlide();
 });
 
 nextStudentSlideBtn.addEventListener('click', () => {
     nextStudentSlide();
-    startAutoSlide(); 
+    startAutoSlide();
 });
 
-showStudentSlide(0);
+// Initialize the slider by showing the first real slide (at DOM index 1)
+showStudentSlide(0, false); // Start with an instant jump to the first real slide
 startAutoSlide();
+
+
+
+
 
 //contactus form js started
 
