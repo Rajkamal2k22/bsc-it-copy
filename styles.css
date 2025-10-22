@@ -1694,6 +1694,7 @@ th, td {
 
 
 /* Faculties css section started */
+  /* Faculties css section started */
 
 .facultiesBody {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -1718,6 +1719,7 @@ th, td {
     align-items: center;
     max-width: 1200px; 
     margin: 0 auto; 
+    width: 100%; 
 }
 
 
@@ -1753,10 +1755,158 @@ th, td {
 }
 
 
+/* --- Coordinator Section for full width --- */
+.coordinator-section {
+    width: 100%; 
+    margin-bottom: 40px; 
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.4s; 
+}
+
+.faculty-card.coordinator-unique {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
+    
+    /* PROFESSIONAL COLOR PALETTE */
+    background: linear-gradient(135deg, #2a3d66, #4b6a9e); /* Deep blue gradient */
+    color: #ffffff; /* White text for contrast */
+    
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); 
+    padding: 40px 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; 
+    overflow: hidden; 
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle white border */
+    width: 100%; 
+    box-sizing: border-box; 
+}
+
+.faculty-card.coordinator-unique:hover {
+    transform: translateY(-8px) scale(1.01); 
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* COORDINATOR TAG (RIBBON) */
+.faculty-card.coordinator-unique::before {
+    content: 'OUR COORDINATOR'; 
+    position: absolute;
+    top: 30px;    
+    left: -70px;  
+    background-color: #ffc300; /* Bright, professional gold/yellow accent */
+    color: #2a3d66; /* Dark blue text for contrast on accent */
+    padding: 8px 70px; 
+    font-size: 0.9rem; /* Slightly smaller for professionalism */
+    font-weight: bold;
+    letter-spacing: 2px; /* More prominent spacing */
+    transform: rotate(-45deg); 
+    transform-origin: 0% 100%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
+    z-index: 10; 
+    border-bottom: 2px solid rgba(0,0,0,0.1); 
+    text-transform: uppercase;
+}
+
+.coordinator-details {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+    position: relative; /* For precise positioning of elements */
+}
+
+.coordinator-unique img {
+    width: 160px; 
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px; /* Adjust spacing as needed */
+    border: 6px solid #ffc300; /* Matching accent color for border */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    flex-shrink: 0; 
+}
+
+.coordinator-text {
+    flex-grow: 1; 
+    text-align: center; 
+    display: flex; /* Use flexbox for internal alignment */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.coordinator-unique h3 {
+    color: #ffffff;
+    font-size: 32px; 
+    font-weight: bold;
+    margin-bottom: 5px; /* Reduced margin */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.coordinator-unique .designation {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffc300; /* Accent color for designation */
+    margin-bottom: 20px; /* More space below designation */
+}
+
+.coordinator-unique p {
+    color: #e0e0e0; /* Softer white for general text */
+    font-size: 16px; /* Slightly smaller for cleaner look */
+    margin: 6px 0; /* Reduced margin */
+    line-height: 1.6;
+}
+
+.coordinator-unique p strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.coordinator-unique .about-coordinator {
+    font-style: italic;
+    color: #f0f0f0; /* Slightly lighter for italic text */
+    margin-top: 25px;
+    margin-bottom: 30px; /* More space around the quote */
+    padding: 0 25px; 
+    font-size: 1.05rem; 
+    max-width: 800px; 
+    margin-left: auto;
+    margin-right: auto;
+    border-left: 3px solid #ffc300; /* Accent line for quote */
+    padding-left: 15px;
+}
+
+/* DOWNLOAD BUTTON STYLING */
+.faculty-card.coordinator-unique .download-cv {
+    background-color: #ffc300; /* Accent color for button */
+    color: #2a3d66; /* Dark blue text for button */
+    padding: 14px 30px; /* Larger padding for a more substantial button */
+    border-radius: 30px;
+    font-size: 17px; /* Slightly larger font */
+    font-weight: 600;
+    box-shadow: 0 8px 20px rgba(255, 195, 0, 0.3);
+    margin-top: 25px; /* Ensure space from the content above */
+    display: inline-flex; /* To align icon and text */
+    align-items: center;
+    gap: 10px; /* Space between icon and text */
+}
+
+.faculty-card.coordinator-unique .download-cv:hover {
+    background-color: #e6b100; /* Darker accent on hover */
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(255, 195, 0, 0.5);
+}
+
+/* --- End Coordinator Section --- */
+
+
 .faculty-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: center; 
     gap: 30px; 
     width: 100%;
 }
@@ -1831,74 +1981,6 @@ th, td {
 }
 
 
-.coordinator-first {
-    order: -1; 
-    background: linear-gradient(145deg, #1a4f66, #2d7088); 
-    color: #fff;
-    border-radius: 18px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
-    padding: 30px 25px;
-    width: 380px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    animation-delay: 0s !important; 
-    position: relative; 
-    overflow: hidden; 
-}
-
-.coordinator-first::before {
-    content: 'Coordinator';
-    position: absolute;
-    top: 18px;    
-    left: -40px;  
-    background-color: #ffcc00; 
-    color: #2c3e50;
-    padding: 6px 45px; 
-    font-size: 0.95rem; 
-    font-weight: bold;
-    letter-spacing: 1px;
-    transform: rotate(-45deg); 
-    transform-origin: 0% 100%;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.3); 
-    z-index: 10; 
-    border-bottom: 2px solid rgba(0,0,0,0.1); 
-}
-
-
-.coordinator-first:hover {
-    transform: translateY(-10px) scale(1.03); 
-    box-shadow: 0 22px 45px rgba(0, 0, 0, 0.45);
-}
-
-.coordinator-first h3 {
-    color: #fff;
-    font-size: 28px; 
-    font-weight: bold;
-    margin-bottom: 10px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-}
-
-.coordinator-first p {
-    color: #e0f2f7; 
-    font-size: 16px;
-    margin: 5px 0;
-}
-
-.coordinator-first p strong {
-    color: #fff;
-    font-weight: 600;
-}
-
-.coordinator-first img {
-    width: 140px; 
-    height: 140px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 20px;
-    border: 5px solid #ecf0f1; 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-
 .download-cv {
     display: inline-flex;
     align-items: center;
@@ -1949,27 +2031,124 @@ th, td {
 }
 
 
-.faculty-grid .faculty-card:not(.coordinator-first):nth-child(1) { animation-delay: 0.3s; }
-.faculty-grid .faculty-card:not(.coordinator-first):nth-child(2) { animation-delay: 0.4s; }
-.faculty-grid .faculty-card:not(.coordinator-first):nth-child(3) { animation-delay: 0.5s; }
-.faculty-grid .faculty-card:not(.coordinator-first):nth-child(4) { animation-delay: 0.6s; }
-.faculty-grid .faculty-card:not(.coordinator-first):nth-child(5) { animation-delay: 0.7s; }
-.faculty-grid .faculty-card:not(.coordinator-first):nth-child(6) { animation-delay: 0.8s; }
-.faculty-grid .faculty-card:not(.coordinator-first):nth-child(7) { animation-delay: 0.9s; }
-.faculty-grid .faculty-card:not(.coordinator-first):nth-child(8) { animation-delay: 1.0s; }
+/* Animation delays for other faculty cards */
+.faculty-grid .faculty-card:nth-of-type(1) { animation-delay: 0.8s; }
+.faculty-grid .faculty-card:nth-of-type(2) { animation-delay: 0.9s; }
+.faculty-grid .faculty-card:nth-of-type(3) { animation-delay: 1.0s; }
+.faculty-grid .faculty-card:nth-of-type(4) { animation-delay: 1.1s; }
+.faculty-grid .faculty-card:nth-of-type(5) { animation-delay: 1.2s; }
+.faculty-grid .faculty-card:nth-of-type(6) { animation-delay: 1.3s; }
+.faculty-grid .faculty-card:nth-of-type(7) { animation-delay: 1.4s; }
+.faculty-grid .faculty-card:nth-of-type(8) { animation-delay: 1.5s; }
+.faculty-grid .faculty-card:nth-of-type(9) { animation-delay: 1.6s; }
+.faculty-grid .faculty-card:nth-of-type(10) { animation-delay: 1.7s; }
 
 
+@media (min-width: 993px) { /* Desktop specific styles for coordinator */
+    .wrapFaculties {
+        max-width: 100%; 
+        padding: 0 20px; 
+        box-sizing: border-box;
+    }
+
+    .coordinator-section {
+        max-width: 1200px; 
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .faculty-card.coordinator-unique {
+        flex-direction: row; 
+        text-align: left; 
+        padding: 50px 60px; 
+        gap: 40px;
+        width: 100%; 
+    }
+
+    .coordinator-details {
+        flex-direction: row; 
+        align-items: center; 
+        text-align: left; 
+        /* Ensure image is left, text content to its right */
+        justify-content: flex-start; /* Aligns content to the start */
+    }
+
+    .coordinator-unique img {
+        margin-right: 30px; /* Space between image and text on desktop */
+        margin-bottom: 0; /* Reset mobile margin */
+    }
+
+    .coordinator-text {
+        text-align: left; 
+        align-items: flex-start; /* Align text content to the left */
+        margin-right: 20px; 
+    }
+
+    /* Position the download button more strategically */
+    .faculty-card.coordinator-unique .download-cv {
+        margin-top: 0; /* Reset margin */
+        position: absolute; /* Position relative to .coordinator-unique */
+        bottom: 50px; /* From bottom */
+        right: 60px; /* From right */
+        align-self: flex-end; /* In case absolute positioning doesn't apply */
+    }
+
+    .faculty-card.coordinator-unique::before {
+        font-size: 1rem; /* Slightly adjust for desktop */
+        padding: 10px 80px;
+        left: -80px; 
+        top: 30px;
+    }
+    .coordinator-unique h3 {
+        font-size: 38px;
+    }
+    .coordinator-unique .designation {
+        font-size: 1.3rem;
+    }
+    .coordinator-unique p {
+        font-size: 18px;
+    }
+    .coordinator-unique .about-coordinator {
+        font-size: 1.2rem;
+        padding: 0; 
+        padding-left: 15px; /* Keep accent line for quote */
+    }
+}
 
 @media (max-width: 992px) {
     #facultiesh1 {
         font-size: 2rem;
     }
-    .coordinator-first { 
-        width: 320px;
-        padding: 25px 20px;
+    .faculty-card.coordinator-unique { 
+        padding: 30px 20px;
+    }
+    .coordinator-unique h3 {
+        font-size: 28px; 
+    }
+    .coordinator-unique .designation {
+        font-size: 1.1rem;
+    }
+    .coordinator-unique p {
+        font-size: 15px;
+    }
+    .coordinator-unique img {
+        width: 130px;
+        height: 130px;
+    }
+    .faculty-card.coordinator-unique::before {
+        font-size: 0.9rem;
+        padding: 6px 50px;
+        left: -45px;
+        top: 20px;
     }
     .faculty-card {
         width: 270px;
+    }
+    /* Ensure download button is below text on mobile */
+    .faculty-card.coordinator-unique .download-cv {
+        position: static;
+        margin-top: 20px;
+        align-self: center; /* Center the button */
     }
 }
 
@@ -1987,13 +2166,27 @@ th, td {
         width: 80%;
         max-width: 300px;
     }
-    .coordinator-first { 
-        width: 90%;
-        max-width: 350px;
-        padding: 20px 15px;
+    .coordinator-section {
+        margin-bottom: 30px;
     }
-    .coordinator-first h3 {
-        font-size: 24px;
+    .faculty-card.coordinator-unique { 
+        padding: 25px 15px;
+    }
+    .coordinator-unique h3 {
+        font-size: 26px;
+    }
+    .coordinator-unique .designation {
+        font-size: 1rem;
+    }
+    .coordinator-unique img {
+        width: 120px;
+        height: 120px;
+    }
+    .faculty-card.coordinator-unique::before {
+        font-size: 0.8rem;
+        padding: 5px 40px;
+        left: -35px;
+        top: 18px;
     }
     .faculty-grid {
         gap: 20px;
@@ -2012,17 +2205,38 @@ th, td {
     .facultiesBody {
         padding: 20px 10px;
     }
-    .coordinator-first { 
-        padding: 15px 10px;
-        width: 100%;
-        font-size: 0.9rem;
+    .faculty-card.coordinator-unique { 
+        padding: 20px 10px;
+        border-radius: 15px;
     }
-    .coordinator-first h3 {
-        font-size: 22px;
+    .coordinator-unique h3 {
+        font-size: 24px;
     }
-    .coordinator-first img {
-        width: 120px;
-        height: 120px;
+    .coordinator-unique .designation {
+        font-size: 0.95rem;
+    }
+    .coordinator-unique p {
+        font-size: 14px;
+    }
+    .coordinator-unique img {
+        width: 100px;
+        height: 100px;
+        border-width: 4px;
+    }
+    .faculty-card.coordinator-unique::before {
+        font-size: 0.7rem;
+        padding: 4px 30px;
+        left: -25px;
+        top: 15px;
+    }
+    .coordinator-unique .about-coordinator {
+        font-size: 1rem;
+        padding: 0 10px;
+        padding-left: 12px;
+    }
+    .faculty-card.coordinator-unique .download-cv {
+        font-size: 14px;
+        padding: 10px 20px;
     }
     .faculty-card {
         padding: 20px;
@@ -2039,6 +2253,8 @@ th, td {
         padding: 8px 15px;
     }
 }
+
+
 
     /* History section started */
     .adressSection{

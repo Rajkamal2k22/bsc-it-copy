@@ -70,6 +70,11 @@
 <div class="facultiesBody" id="scrollTofaculties">
     <h1 id="facultiesh1">Faculty of B.Sc. IT Department</h1>
 
+        <h2 style="color: #ff000d;">This page is under Devlopment phase.....So, wait coming soon with better updates.</h2>
+        <br>
+
+
+
     <div class="wrapFaculties">
         <div class="controls">
             <input type="text" id="nameSearch" placeholder="Search by faculties name..." oninput="filterFaculty()" />
@@ -86,22 +91,28 @@
             </select>
         </div>
 
-        <div class="faculty-grid" id="facultyGrid">
-            <!-- COORDINATOR CARD - NOW INSIDE faculty-grid -->
-            <div class="faculty-card coordinator-first" data-subject="Programming Data Structures" data-name="Shambhu Sharan">
-                <img src="images/hod_sir.jpeg" alt="Faculty Photo" />
-                <h3>Dr. Shambhu Sharan</h3>
-                <p><strong>Designation:</strong> Coordinator</p>
-                <p><strong>📩</strong> ---- </p>
-                <p><strong>📞</strong> ---- </p>
-                <p><strong>Subject:</strong> Data Structures</p>
-                <p><strong>Degree:</strong> Ph.D. in Computer Science</p>
-                <p class="about">Passionate about clean code & teaching logic-building.</p>
-                <a href="path/to/shambhu_sharan_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
+         <!-- Coordinator's Section - Full Width and Unique Design -->
+        <div class="coordinator-section">
+            <div class="faculty-card coordinator-unique" data-subject="Programming Data Structures" data-name="Shambhu Sharan">
+                <div class="coordinator-details">
+                    <img src="images/hod_sir.jpeg" alt="Faculty Photo" />
+                    <div class="coordinator-text">
+                        <h3>Dr. Shambhu Sharan</h3>
+                        <p class="designation"><strong>Designation:</strong> Coordinator</p>
+                        <p><strong>📩</strong> ---- </p>
+                        <p><strong>📞</strong> ---- </p>
+                        <p><strong>Subject:</strong> Data Structures</p>
+                        <p><strong>Degree:</strong> Ph.D. in Computer Science</p>
+                        <p class="about-coordinator">"As the Coordinator of B.Sc. IT, I'm dedicated to fostering innovation and excellence. Our mission is to equip students with cutting-edge skills and critical thinking to thrive in the dynamic world of information technology. I am passionate about clean code and teaching logic-building, ensuring our students build a strong foundation for their future."</p>
+                        <a href="path/to/shambhu_sharan_cv.pdf" download class="download-cv"><i class='bx bxs-download'></i> Download CV</a>
+                    </div>
+                </div>
             </div>
-
+        </div>
+        <!-- End Coordinator's Section -->
+         
+        <div class="faculty-grid" id="facultyGrid">
             <!-- Rest of the Faculty Cards -->
-
              <div class="faculty-card" data-subject="Data Structures Database" data-name="Rakesh Kumar">
                 <img src="images/rakesh_sir.jpeg" alt="Faculty Photo" />
                 <h3>Mr. Rakesh kumar</h3>
