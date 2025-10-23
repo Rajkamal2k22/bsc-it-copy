@@ -1694,7 +1694,6 @@ th, td {
 
 
 /* Faculties css section started */
-  /* Faculties css section started */
 
 .facultiesBody {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -1765,21 +1764,20 @@ th, td {
 
 .faculty-card.coordinator-unique {
     display: flex; 
-    flex-direction: column; 
+    flex-direction: column; /* Mobile-first: stack image and text */
     align-items: center; 
     text-align: center; 
     
-    /* PROFESSIONAL COLOR PALETTE */
-    background: linear-gradient(135deg, #2a3d66, #4b6a9e); /* Deep blue gradient */
-    color: #ffffff; /* White text for contrast */
+    background: #0f2b5a; /* Solid dark blue from your image */
+    color: #ffffff; /* White text */
     
     border-radius: 20px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); 
     padding: 40px 30px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative; 
+    position: relative; /* Needed for the ::before banner */
     overflow: hidden; 
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle white border */
+    border: 1px solid #2a4a8a; /* Subtle border */
     width: 100%; 
     box-sizing: border-box; 
 }
@@ -1789,20 +1787,18 @@ th, td {
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
 }
 
-/* COORDINATOR TAG (RIBBON) */
+/* COORDINATOR TAG (RIBBON) - Tilted like the photo */
 .faculty-card.coordinator-unique::before {
     content: 'OUR COORDINATOR'; 
     position: absolute;
     top: 30px;    
     left: -70px;  
-    background-color: #ffc300; /* Bright, professional gold/yellow accent */
-    color: #2a3d66; /* Dark blue text for contrast on accent */
+    background-color: #ffc300; /* Gold/yellow accent */
+    color: #2a3d66; /* Dark blue text */
     padding: 8px 70px; 
-    font-size: 0.9rem; /* Slightly smaller for professionalism */
+    font-size: 0.9rem; 
     font-weight: bold;
-    letter-spacing: 2px; /* More prominent spacing */
-    transform: rotate(-45deg); 
-    transform-origin: 0% 100%;
+    letter-spacing: 2px; 
     box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
     z-index: 10; 
     border-bottom: 2px solid rgba(0,0,0,0.1); 
@@ -1811,97 +1807,113 @@ th, td {
 
 .coordinator-details {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column; /* Mobile-first: stack image and text */
     align-items: center;
     gap: 25px;
     width: 100%;
-    position: relative; /* For precise positioning of elements */
+    position: relative; 
 }
 
+/* IMAGE FRAME - Square shape with golden border */
 .coordinator-unique img {
     width: 160px; 
     height: 160px;
-    border-radius: 50%;
+    border-radius: 8px; /* Slightly rounded corners for the square */
     object-fit: cover;
-    margin-bottom: 15px; /* Adjust spacing as needed */
-    border: 6px solid #ffc300; /* Matching accent color for border */
+    margin-bottom: 15px; 
+    border: 6px solid #ffc300; /* Golden border */
+    background-color: #fff; 
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     flex-shrink: 0; 
+    box-sizing: border-box; 
 }
 
 .coordinator-text {
     flex-grow: 1; 
     text-align: center; 
-    display: flex; /* Use flexbox for internal alignment */
+    display: flex; 
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+/* Coordinator Name - White, not golden */
 .coordinator-unique h3 {
     color: #ffffff;
     font-size: 32px; 
     font-weight: bold;
-    margin-bottom: 5px; /* Reduced margin */
+    margin-bottom: 5px; 
     text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
 }
 
-.coordinator-unique .designation {
+/* Designation - Light gray, not golden */
+.coordinator-unique .designation,
+.coordinator-unique .designation strong {
     font-size: 1.2rem;
     font-weight: 600;
-    color: #ffc300; /* Accent color for designation */
-    margin-bottom: 20px; /* More space below designation */
+    color: #e0e0e0; /* Light gray */
+    margin-bottom: 20px; 
 }
 
 .coordinator-unique p {
-    color: #e0e0e0; /* Softer white for general text */
-    font-size: 16px; /* Slightly smaller for cleaner look */
-    margin: 6px 0; /* Reduced margin */
+    color: #e0e0e0; /* Light gray for regular text */
+    font-size: 16px; 
+    margin: 6px 0; 
     line-height: 1.6;
 }
 
+/* Labels (Subject:, Degree:) - Light blue/gray, not golden */
 .coordinator-unique p strong {
-    color: #ffffff;
+    color: #a0b8e0; /* Light blue/gray like photo */
     font-weight: 600;
+    margin-right: 5px; 
 }
 
 .coordinator-unique .about-coordinator {
     font-style: italic;
-    color: #f0f0f0; /* Slightly lighter for italic text */
+    color: #f0f0f0; 
     margin-top: 25px;
-    margin-bottom: 30px; /* More space around the quote */
+    margin-bottom: 30px; 
     padding: 0 25px; 
     font-size: 1.05rem; 
     max-width: 800px; 
     margin-left: auto;
     margin-right: auto;
-    border-left: 3px solid #ffc300; /* Accent line for quote */
-    padding-left: 15px;
+    border-left: none;
+    padding-left: 0; 
 }
 
-/* DOWNLOAD BUTTON STYLING */
+/* DOWNLOAD BUTTON - Golden */
 .faculty-card.coordinator-unique .download-cv {
-    background-color: #ffc300; /* Accent color for button */
-    color: #2a3d66; /* Dark blue text for button */
-    padding: 14px 30px; /* Larger padding for a more substantial button */
-    border-radius: 30px;
-    font-size: 17px; /* Slightly larger font */
+    background-color: #ffc300; /* Golden button */
+    color: #2a3d66; /* Dark blue text */
+    padding: 14px 30px; 
+    border-radius: 8px; /* Rounded rectangle */
+    font-size: 17px; 
     font-weight: 600;
     box-shadow: 0 8px 20px rgba(255, 195, 0, 0.3);
-    margin-top: 25px; /* Ensure space from the content above */
-    display: inline-flex; /* To align icon and text */
+    margin-top: 25px; 
+    display: inline-flex; 
     align-items: center;
-    gap: 10px; /* Space between icon and text */
+    gap: 10px; 
+    align-self: center; /* Center on mobile */
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
 .faculty-card.coordinator-unique .download-cv:hover {
-    background-color: #e6b100; /* Darker accent on hover */
+    background-color: #e6b100; 
     transform: translateY(-4px);
     box-shadow: 0 10px 25px rgba(255, 195, 0, 0.5);
 }
 
-/* --- End Coordinator Section --- */
+#coordinator-h3{
+    color: #e6b100;
+    font-weight: 500;
+}
 
+
+/* --- End Coordinator Section --- */
 
 .faculty-grid {
     display: flex;
@@ -2058,60 +2070,62 @@ th, td {
     }
 
     .faculty-card.coordinator-unique {
-        flex-direction: row; 
+        flex-direction: row; /* Desktop: horizontal layout */
         text-align: left; 
-        padding: 50px 60px; 
+        padding: 40px 50px; /* Adjust padding */
+        padding-top: 80px; /* Keep room for the banner */
         gap: 40px;
         width: 100%; 
     }
 
     .coordinator-details {
-        flex-direction: row; 
+        flex-direction: row; /* Desktop: horizontal layout for details */
         align-items: center; 
         text-align: left; 
-        /* Ensure image is left, text content to its right */
-        justify-content: flex-start; /* Aligns content to the start */
+        justify-content: flex-start; 
+        width: 100%; /* Take full width */
+        gap: 30px;
     }
 
     .coordinator-unique img {
-        margin-right: 30px; /* Space between image and text on desktop */
-        margin-bottom: 0; /* Reset mobile margin */
+        margin-bottom: 0; /* Remove mobile margin */
+        width: 170px; /* Slightly larger on desktop */
+        height: 170px;
     }
 
     .coordinator-text {
         text-align: left; 
-        align-items: flex-start; /* Align text content to the left */
-        margin-right: 20px; 
+        align-items: flex-start; /* Align text to the left */
+        flex-grow: 1;
+        height: 100%; /* Ensure it fills the space */
     }
 
-    /* Position the download button more strategically */
+    /* THIS IS THE KEY CHANGE: Remove absolute positioning */
     .faculty-card.coordinator-unique .download-cv {
-        margin-top: 0; /* Reset margin */
-        position: absolute; /* Position relative to .coordinator-unique */
-        bottom: 50px; /* From bottom */
-        right: 60px; /* From right */
-        align-self: flex-end; /* In case absolute positioning doesn't apply */
+        position: static; /* Back to in-flow */
+        align-self: flex-start; /* Align with text */
+        margin-top: 15px; /* Space between quote and button */
     }
 
     .faculty-card.coordinator-unique::before {
-        font-size: 1rem; /* Slightly adjust for desktop */
-        padding: 10px 80px;
-        left: -80px; 
+        font-size: 0.9rem; 
+        padding: 7px 16px;
+        left: 30px; 
         top: 30px;
     }
     .coordinator-unique h3 {
-        font-size: 38px;
+        font-size: 36px;
     }
     .coordinator-unique .designation {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
     .coordinator-unique p {
-        font-size: 18px;
+        font-size: 17px;
     }
     .coordinator-unique .about-coordinator {
-        font-size: 1.2rem;
-        padding: 0; 
-        padding-left: 15px; /* Keep accent line for quote */
+        font-size: 1.1rem;
+        margin-left: 0;
+        margin-right: 0;
     }
 }
 
@@ -2144,11 +2158,10 @@ th, td {
     .faculty-card {
         width: 270px;
     }
-    /* Ensure download button is below text on mobile */
     .faculty-card.coordinator-unique .download-cv {
         position: static;
         margin-top: 20px;
-        align-self: center; /* Center the button */
+        align-self: center; 
     }
 }
 
@@ -2193,7 +2206,11 @@ th, td {
     }
     .faculty-card {
         width: 90%;
-        max-width: 300px;
+       
+    }
+
+      .coordinator-details {
+        margin-top: 2.5rem;
     }
 }
 
@@ -2253,6 +2270,7 @@ th, td {
         padding: 8px 15px;
     }
 }
+
 
 
 
