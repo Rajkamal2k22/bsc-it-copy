@@ -1,151 +1,148 @@
- const preloader = document.getElementById('preloader');
-
-// As soon as the DOM is ready, fade out the preloader
-// This is typically very fast, making the preloader appear for a minimal time.
+const preloader = document.getElementById('preloader');
 document.addEventListener('DOMContentLoaded', () => {
     preloader.style.opacity = '0';
     setTimeout(() => {
         preloader.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Restore body scrollbar
-    }, 500); // Matches the CSS transition duration for a smooth fade
+        document.body.style.overflow = 'auto'; 
+    }, 500); 
 });
-   
-    //Notification Bar Logic  started
 
-  const notificationTrack = document.querySelector('.notificationTrack');
-    const notificationItemsTop = document.querySelectorAll('.notificationItem');
-    const announcementContainer = document.querySelector('.announcement-container');
+//Notification Bar Logic  started
 
-    function renderDefaultScrollingAnnouncements() {
-        announcementContainer.innerHTML = ''; 
+const notificationTrack = document.querySelector('.notificationTrack');
+const notificationItemsTop = document.querySelectorAll('.notificationItem');
+const announcementContainer = document.querySelector('.announcement-container');
 
-        const mainHeading = document.createElement('h3');
-        mainHeading.textContent = 'Important Notices';
-        mainHeading.classList.add('announcements-main-heading');
-        announcementContainer.appendChild(mainHeading);
+function renderDefaultScrollingAnnouncements() {
+    announcementContainer.innerHTML = '';
 
-        const scrollWrapper = document.createElement('div');
-        scrollWrapper.classList.add('announcement-scroll-wrapper');
-        announcementContainer.appendChild(scrollWrapper);
+    const mainHeading = document.createElement('h3');
+    mainHeading.textContent = 'Important Notices';
+    mainHeading.classList.add('announcements-main-heading');
+    announcementContainer.appendChild(mainHeading);
 
-        const noticesListScrolling = document.createElement('div');
-        noticesListScrolling.classList.add('notices-list-scrolling');
-        scrollWrapper.appendChild(noticesListScrolling);
+    const scrollWrapper = document.createElement('div');
+    scrollWrapper.classList.add('announcement-scroll-wrapper');
+    announcementContainer.appendChild(scrollWrapper);
 
-    
-        const allNoticesData = []; 
-        notificationItemsTop.forEach(item => {
-            const shortText = item.textContent.trim();
-            const fullMessage = item.getAttribute('data-full'); 
-            if (shortText && fullMessage) {
-                allNoticesData.push({ short: shortText, full: fullMessage });
-            }
-        });
+    const noticesListScrolling = document.createElement('div');
+    noticesListScrolling.classList.add('notices-list-scrolling');
+    scrollWrapper.appendChild(noticesListScrolling);
 
 
-        const numRepeats = 3; 
-        for (let i = 0; i < numRepeats; i++) {
-            allNoticesData.forEach(notice => { 
-                const noticeCardTemplate = document.createElement('div');
-                noticeCardTemplate.classList.add('notice-card-scrolling');
-                noticeCardTemplate.setAttribute('data-full', notice.full); 
-                noticeCardTemplate.style.cursor = 'pointer'; 
-
-                const icon = document.createElement('i');
-                icon.classList.add('fas', 'fa-info-circle', 'notice-icon-scrolling');
-
-                const noticeText = document.createElement('span');
-                noticeText.textContent = notice.short; 
-                noticeText.classList.add('notice-card-text-scrolling');
-
-                noticeCardTemplate.appendChild(icon);
-                noticeCardTemplate.appendChild(noticeText);
-
-          
-                noticeCardTemplate.addEventListener('click', () => {
-                    displaySingleDetailedAnnouncement(notice.full);
-                });
-
-                noticesListScrolling.appendChild(noticeCardTemplate);
-            });
+    const allNoticesData = [];
+    notificationItemsTop.forEach(item => {
+        const shortText = item.textContent.trim();
+        const fullMessage = item.getAttribute('data-full');
+        if (shortText && fullMessage) {
+            allNoticesData.push({ short: shortText, full: fullMessage });
         }
-        
-      
-        const contentHeight = noticesListScrolling.scrollHeight;
-        const wrapperHeight = scrollWrapper.clientHeight;
-      
-        const animationDuration = contentHeight / (wrapperHeight * 0.05); 
-        noticesListScrolling.style.animationDuration = `${animationDuration}s`;
-        
-       
+    });
+
+
+    const numRepeats = 3;
+    for (let i = 0; i < numRepeats; i++) {
+        allNoticesData.forEach(notice => {
+            const noticeCardTemplate = document.createElement('div');
+            noticeCardTemplate.classList.add('notice-card-scrolling');
+            noticeCardTemplate.setAttribute('data-full', notice.full);
+            noticeCardTemplate.style.cursor = 'pointer';
+
+            const icon = document.createElement('i');
+            icon.classList.add('fas', 'fa-info-circle', 'notice-icon-scrolling');
+
+            const noticeText = document.createElement('span');
+            noticeText.textContent = notice.short;
+            noticeText.classList.add('notice-card-text-scrolling');
+
+            noticeCardTemplate.appendChild(icon);
+            noticeCardTemplate.appendChild(noticeText);
+
+
+            noticeCardTemplate.addEventListener('click', () => {
+                displaySingleDetailedAnnouncement(notice.full);
+            });
+
+            noticesListScrolling.appendChild(noticeCardTemplate);
+        });
+    }
+
+
+    const contentHeight = noticesListScrolling.scrollHeight;
+    const wrapperHeight = scrollWrapper.clientHeight;
+
+    const animationDuration = contentHeight / (wrapperHeight * 0.05);
+    noticesListScrolling.style.animationDuration = `${animationDuration}s`;
+
+
+    noticesListScrolling.style.animationPlayState = 'running';
+
+    scrollWrapper.addEventListener('mouseenter', () => {
+        noticesListScrolling.style.animationPlayState = 'paused';
+    });
+    scrollWrapper.addEventListener('mouseleave', () => {
         noticesListScrolling.style.animationPlayState = 'running';
+    });
+}
 
-        scrollWrapper.addEventListener('mouseenter', () => {
-            noticesListScrolling.style.animationPlayState = 'paused';
-        });
-        scrollWrapper.addEventListener('mouseleave', () => {
-            noticesListScrolling.style.animationPlayState = 'running';
-        });
-    }
+function displaySingleDetailedAnnouncement(fullMessage) {
+    announcementContainer.innerHTML = '';
 
-    function displaySingleDetailedAnnouncement(fullMessage) {
-        announcementContainer.innerHTML = ''; 
+    const detailDiv = document.createElement('div');
+    detailDiv.classList.add('detailed-announcement');
+    detailDiv.innerHTML = `<h3>Announcement Details</h3><p>${fullMessage}</p>`;
+    announcementContainer.appendChild(detailDiv);
 
-        const detailDiv = document.createElement('div');
-        detailDiv.classList.add('detailed-announcement');
-        detailDiv.innerHTML = `<h3>Announcement Details</h3><p>${fullMessage}</p>`;
-        announcementContainer.appendChild(detailDiv);
+    const backButton = document.createElement('button');
+    backButton.textContent = 'Back to All Notices';
+    backButton.classList.add('back-to-notices-btn');
+    backButton.addEventListener('click', renderDefaultScrollingAnnouncements); // 
+    announcementContainer.appendChild(backButton);
 
-        const backButton = document.createElement('button');
-        backButton.textContent = 'Back to All Notices';
-        backButton.classList.add('back-to-notices-btn');
-        backButton.addEventListener('click', renderDefaultScrollingAnnouncements); // 
-        announcementContainer.appendChild(backButton);
+    announcementContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
 
-        announcementContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+if (notificationTrack && notificationItemsTop.length > 0 && announcementContainer) {
+    const totalNotifications = notificationItemsTop.length;
 
-    if (notificationTrack && notificationItemsTop.length > 0 && announcementContainer) {
-        const totalNotifications = notificationItemsTop.length;
-     
-        notificationItemsTop.forEach(item => {
-            const clone = item.cloneNode(true);
-            notificationTrack.appendChild(clone);
-        });
+    notificationItemsTop.forEach(item => {
+        const clone = item.cloneNode(true);
+        notificationTrack.appendChild(clone);
+    });
 
-        let position = 0;
-        const scrollSpeed = 0.6; 
-        const firstItem = notificationItemsTop[0];
-  
-        const itemWidth = firstItem ? (firstItem.offsetWidth + parseFloat(getComputedStyle(firstItem).marginRight || 0)) : 0;
+    let position = 0;
+    const scrollSpeed = 0.6;
+    const firstItem = notificationItemsTop[0];
+
+    const itemWidth = firstItem ? (firstItem.offsetWidth + parseFloat(getComputedStyle(firstItem).marginRight || 0)) : 0;
 
 
-        function animateScroll() {
-            position -= scrollSpeed;
+    function animateScroll() {
+        position -= scrollSpeed;
 
-            if (position <= -itemWidth * totalNotifications && totalNotifications > 0) { 
-                position = 0;
-            }
-            notificationTrack.style.transform = `translateX(${position}px)`;
-            requestAnimationFrame(animateScroll);
+        if (position <= -itemWidth * totalNotifications && totalNotifications > 0) {
+            position = 0;
         }
-
-        animateScroll();
-
-
-
-        notificationTrack.querySelectorAll('.notificationItem').forEach(item => {
-            item.addEventListener('click', () => {
-                const fullMessage = item.getAttribute('data-full');
-                if (fullMessage) {
-                    displaySingleDetailedAnnouncement(fullMessage);
-                }
-            });
-        });
-
-
-        renderDefaultScrollingAnnouncements();
+        notificationTrack.style.transform = `translateX(${position}px)`;
+        requestAnimationFrame(animateScroll);
     }
+
+    animateScroll();
+
+
+
+    notificationTrack.querySelectorAll('.notificationItem').forEach(item => {
+        item.addEventListener('click', () => {
+            const fullMessage = item.getAttribute('data-full');
+            if (fullMessage) {
+                displaySingleDetailedAnnouncement(fullMessage);
+            }
+        });
+    });
+
+
+    renderDefaultScrollingAnnouncements();
+}
 
 //Notification Bar Logic  Ended
 
@@ -164,30 +161,30 @@ function hideNavbar() {
 function showNavbar() {
     navbar.style.top = '0'; // Show navbar
 }
-//Event Listener for Laptops/Desktops
+//Event Listener for Lsrge display
 
-window.addEventListener('wheel', function(event) {
+window.addEventListener('wheel', function (event) {
 
-  if (event.deltaY > 0) {
-    hideNavbar();
-  } else {
-    showNavbar();
-  }
+    if (event.deltaY > 0) {
+        hideNavbar();
+    } else {
+        showNavbar();
+    }
 });
 
 
-//Event Listeners for Mobile/Touch Devices
+//Event Listeners for Mobile,Touch Devices
 
-let startY; 
+let startY;
 
-document.addEventListener('touchstart', function(event) {
+document.addEventListener('touchstart', function (event) {
 
     startY = event.touches[0].clientY;
 }, { passive: true });
 
-document.addEventListener('touchmove', function(event) {
+document.addEventListener('touchmove', function (event) {
     if (!startY) {
-        return; 
+        return;
     }
 
     const currentY = event.touches[0].clientY;
@@ -200,260 +197,244 @@ document.addEventListener('touchmove', function(event) {
     } else if (deltaY < -5) {
         showNavbar();
     }
-    startY = null; 
+    startY = null;
 
 }, { passive: true });
 
-     //Navbar JS Ended
+//Navbar JS Ended
 
 
 // ye function tab kaam karega jab page ka pura content load ho jayega...
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
-     //main page slider image logic started
+    //main page slider image logic started
 
-const studentSliderContainer = document.querySelector('.slider');
-const studentSliderImages = document.querySelectorAll('.slider img');
-const studentSliderDots = document.querySelectorAll('.sliderNav .dot');
-const prevStudentSlideBtn = document.getElementById('prevStudentSlide');
-const nextStudentSlideBtn = document.getElementById('nextStudentSlide');
+    const studentSliderContainer = document.querySelector('.slider');
+    const studentSliderImages = document.querySelectorAll('.slider img');
+    const studentSliderDots = document.querySelectorAll('.sliderNav .dot');
+    const prevStudentSlideBtn = document.getElementById('prevStudentSlide');
+    const nextStudentSlideBtn = document.getElementById('nextStudentSlide');
 
-const numRealSlides = studentSliderDots.length; // Correctly 3 based on your HTML
+    const numRealSlides = studentSliderDots.length; 
 
-let currentRealSlideIndex = 0; // Tracks the index of the *real* slide (0 to numRealSlides - 1)
-const studentSlideIntervalTime = 3000;
-const scrollTransitionDuration = 300; // Matches your CSS scroll-behavior: smooth transition duration
+    let currentRealSlideIndex = 0; 
+    const studentSlideIntervalTime = 3000;
+    const scrollTransitionDuration = 300; 
 
-let autoStudentSlideInterval;
+    let autoStudentSlideInterval;
 
-function updateDotActiveState(realIndex) {
-    studentSliderDots.forEach((dot, i) => {
-        if (i === realIndex) {
-            dot.classList.add('active');
+    function updateDotActiveState(realIndex) {
+        studentSliderDots.forEach((dot, i) => {
+            if (i === realIndex) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
+
+    function showStudentSlide(realIndex, smoothScroll = true) {
+        let targetImageIndex = realIndex + 1; 
+
+        if (smoothScroll) {
+            studentSliderContainer.style.scrollBehavior = 'smooth';
         } else {
-            dot.classList.remove('active');
+            studentSliderContainer.style.scrollBehavior = 'auto'; 
         }
-    });
-}
 
-function showStudentSlide(realIndex, smoothScroll = true) {
-    let targetImageIndex = realIndex + 1; // Account for the prepended clone
+        studentSliderContainer.scrollLeft = studentSliderImages[targetImageIndex].offsetLeft;
+        currentRealSlideIndex = realIndex;
+        updateDotActiveState(realIndex);
+    }
 
-    if (smoothScroll) {
+    function nextStudentSlide() {
+        let targetRealIndex = currentRealSlideIndex + 1;
+      
+        let targetImageDomIndexToScroll = currentRealSlideIndex + 1 + 1;
+
         studentSliderContainer.style.scrollBehavior = 'smooth';
-    } else {
-        studentSliderContainer.style.scrollBehavior = 'auto'; // Instant jump
+        studentSliderContainer.scrollLeft = studentSliderImages[targetImageDomIndexToScroll].offsetLeft;
+
+        if (targetRealIndex >= numRealSlides) {
+           
+            currentRealSlideIndex = 0; 
+            updateDotActiveState(0); 
+            setTimeout(() => {
+                studentSliderContainer.style.scrollBehavior = 'auto';
+                studentSliderContainer.scrollLeft = studentSliderImages[1].offsetLeft; 
+                studentSliderContainer.style.scrollBehavior = 'smooth';
+            }, scrollTransitionDuration);
+        } else {
+            currentRealSlideIndex = targetRealIndex;
+            updateDotActiveState(targetRealIndex);
+        }
     }
 
-    studentSliderContainer.scrollLeft = studentSliderImages[targetImageIndex].offsetLeft;
-    currentRealSlideIndex = realIndex;
-    updateDotActiveState(realIndex);
-}
+    function prevStudentSlide() {
+        let targetRealIndex = currentRealSlideIndex - 1;
+        let targetImageDomIndexToScroll = currentRealSlideIndex + 1 - 1;
 
-function nextStudentSlide() {
-    let targetRealIndex = currentRealSlideIndex + 1;
-    // This scrolls to the next image in the DOM, including the final clone.
-    let targetImageDomIndexToScroll = currentRealSlideIndex + 1 + 1;
+        studentSliderContainer.style.scrollBehavior = 'smooth';
+        studentSliderContainer.scrollLeft = studentSliderImages[targetImageDomIndexToScroll].offsetLeft;
 
-    studentSliderContainer.style.scrollBehavior = 'smooth';
-    studentSliderContainer.scrollLeft = studentSliderImages[targetImageDomIndexToScroll].offsetLeft;
-
-    if (targetRealIndex >= numRealSlides) {
-        // If we just smoothly scrolled to the appended clone (which looks like the 1st slide)
-        currentRealSlideIndex = 0; // Conceptually, we're now on the first real slide
-        updateDotActiveState(0); // Update dot immediately to prevent flickering
-
-        setTimeout(() => {
-            // After the smooth scroll finishes, instantly jump to the first *real* slide's position.
-            studentSliderContainer.style.scrollBehavior = 'auto';
-
-            // Instead of .offsetLeft, for the jump to the very first *real* slide,
-            // we can scroll to the position of studentSliderImages[1].
-            // Or, more robustly, if the slider is always full width, scroll to the width of one image.
-            studentSliderContainer.scrollLeft = studentSliderImages[1].offsetLeft; // This is the start of the first REAL slide (DOM index 1)
-
-            // Re-enable smooth scroll immediately after the jump
-            studentSliderContainer.style.scrollBehavior = 'smooth';
-        }, scrollTransitionDuration);
-    } else {
-        currentRealSlideIndex = targetRealIndex;
-        updateDotActiveState(targetRealIndex);
+        if (targetRealIndex < 0) {
+            currentRealSlideIndex = numRealSlides - 1;
+            updateDotActiveState(numRealSlides - 1); 
+            setTimeout(() => {
+                studentSliderContainer.style.scrollBehavior = 'auto';
+                studentSliderContainer.scrollLeft = studentSliderImages[numRealSlides].offsetLeft; 
+                studentSliderContainer.style.scrollBehavior = 'smooth';
+            }, scrollTransitionDuration);
+        } else {
+            currentRealSlideIndex = targetRealIndex;
+            updateDotActiveState(targetRealIndex);
+        }
     }
-}
 
-function prevStudentSlide() {
-    let targetRealIndex = currentRealSlideIndex - 1;
-    // This scrolls to the previous image in the DOM, including the initial clone.
-    let targetImageDomIndexToScroll = currentRealSlideIndex + 1 - 1;
-
-    studentSliderContainer.style.scrollBehavior = 'smooth';
-    studentSliderContainer.scrollLeft = studentSliderImages[targetImageDomIndexToScroll].offsetLeft;
-
-    if (targetRealIndex < 0) {
-        // If we just smoothly scrolled to the prepended clone (which looks like the last slide)
-        currentRealSlideIndex = numRealSlides - 1; // Conceptually, we're now on the last real slide
-        updateDotActiveState(numRealSlides - 1); // Update dot immediately
-
-        setTimeout(() => {
-            // After the smooth scroll finishes, instantly jump to the last *real* slide's position.
-            studentSliderContainer.style.scrollBehavior = 'auto';
-
-            // For the jump to the very last *real* slide, scroll to its offsetLeft.
-            studentSliderContainer.scrollLeft = studentSliderImages[numRealSlides].offsetLeft; // This is the start of the last REAL slide (DOM index 3)
-
-            // Re-enable smooth scroll immediately after the jump
-            studentSliderContainer.style.scrollBehavior = 'smooth';
-        }, scrollTransitionDuration);
-    } else {
-        currentRealSlideIndex = targetRealIndex;
-        updateDotActiveState(targetRealIndex);
+    function startAutoSlide() {
+        clearInterval(autoStudentSlideInterval);
+        autoStudentSlideInterval = setInterval(nextStudentSlide, studentSlideIntervalTime);
     }
-}
 
-function startAutoSlide() {
-    clearInterval(autoStudentSlideInterval);
-    autoStudentSlideInterval = setInterval(nextStudentSlide, studentSlideIntervalTime);
-}
+    studentSliderDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showStudentSlide(index); 
+            startAutoSlide();
+        });
+    });
 
-// Event Listeners for dots
-studentSliderDots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        showStudentSlide(index); // Directly show the real slide index, with smooth scroll
+    // Event Listeners for arrows
+    prevStudentSlideBtn.addEventListener('click', () => {
+        prevStudentSlide();
         startAutoSlide();
     });
-});
 
-// Event Listeners for arrows
-prevStudentSlideBtn.addEventListener('click', () => {
-    prevStudentSlide();
+    nextStudentSlideBtn.addEventListener('click', () => {
+        nextStudentSlide();
+        startAutoSlide();
+    });
+
+   
+    showStudentSlide(0, false); 
     startAutoSlide();
-});
-
-nextStudentSlideBtn.addEventListener('click', () => {
-    nextStudentSlide();
-    startAutoSlide();
-});
-
-// Initialize the slider by showing the first real slide (at DOM index 1)
-showStudentSlide(0, false); // Start with an instant jump to the first real slide
-startAutoSlide();
 
 
-
-
-
-//contactus form js started
+    //contactus form js started
 
     const form = document.getElementById('callBackForm')
 
-        if (form) {
-    form.addEventListener("submit", async function (e) {
-      e.preventDefault();
+    if (form) {
+        form.addEventListener("submit", async function (e) {
+            e.preventDefault();
 
-      const formData = new FormData(form);
+            const formData = new FormData(form);
 
-      try {
-        const response = await fetch(form.action, {
-          method: form.method,
-          body: formData,
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                });
+
+                if (response.ok) {
+                    alert("✅ Form submitted successfully!");
+                    form.reset();
+                    setTimeout(() => {
+                        location.reload();
+                    }, 1500);
+                } else {
+                    alert("❌ Submission failed. Please try again.");
+                }
+            } catch (error) {
+                console.error(error);
+                alert("⚠️ Something went wrong. Please check your internet connection.");
+            }
         });
-
-        if (response.ok) {
-          alert("✅ Form submitted successfully!");
-          form.reset();
-          setTimeout(() => {
-            location.reload(); 
-          }, 1500);
-        } else {
-          alert("❌ Submission failed. Please try again.");
-        }
-      } catch (error) {
-        console.error(error);
-        alert("⚠️ Something went wrong. Please check your internet connection.");
-      }
-    });
-  }
+    }
 
 });
 
+  //contactus form js ended
 
-    //Code for gallery.html 
-    const gallery = document.getElementById('gal-gallery');
-    if (gallery) {
-        const allPhotos = Array.from(document.querySelectorAll('.gal-photo'));
-        const lightbox = document.getElementById('gal-lightbox');
-        const lightboxImg = document.getElementById('gal-lightbox-img');
-        let visiblePhotos = allPhotos; 
-        let currentIndex = 0;
 
-        function addClickListeners() {
-            visiblePhotos.forEach((photo, index) => {
-                photo.onclick = () => {
-                    currentIndex = index;
-                    lightboxImg.src = photo.querySelector('img').src;
-                    lightbox.classList.add('active');
-                };
-            });
-        }
+//Gallery js started
 
-        window.closeLightbox = function() {
-            lightbox.classList.remove('active');
-        }
+const gallery = document.getElementById('gal-gallery');
+if (gallery) {
+    const allPhotos = Array.from(document.querySelectorAll('.gal-photo'));
+    const lightbox = document.getElementById('gal-lightbox');
+    const lightboxImg = document.getElementById('gal-lightbox-img');
+    let visiblePhotos = allPhotos;
+    let currentIndex = 0;
 
-        window.nextLightbox = function() {
-            currentIndex = (currentIndex + 1) % visiblePhotos.length;
-            lightboxImg.src = visiblePhotos[currentIndex].querySelector('img').src;
-        }
-
-        window.prevLightbox = function() {
-            currentIndex = (currentIndex - 1 + visiblePhotos.length) % visiblePhotos.length;
-            lightboxImg.src = visiblePhotos[currentIndex].querySelector('img').src;
-        }
-        
-        window.openAllInLightbox = function() {
-            if (visiblePhotos.length > 0) {
-              currentIndex = 0;
-              lightboxImg.src = visiblePhotos[currentIndex].querySelector('img').src;
-              lightbox.classList.add('active');
-            }
-        }
-
-        addClickListeners();
+    function addClickListeners() {
+        visiblePhotos.forEach((photo, index) => {
+            photo.onclick = () => {
+                currentIndex = index;
+                lightboxImg.src = photo.querySelector('img').src;
+                lightbox.classList.add('active');
+            };
+        });
     }
 
-    //FILTER LOGIC 
+    window.closeLightbox = function () {
+        lightbox.classList.remove('active');
+    }
+
+    window.nextLightbox = function () {
+        currentIndex = (currentIndex + 1) % visiblePhotos.length;
+        lightboxImg.src = visiblePhotos[currentIndex].querySelector('img').src;
+    }
+
+    window.prevLightbox = function () {
+        currentIndex = (currentIndex - 1 + visiblePhotos.length) % visiblePhotos.length;
+        lightboxImg.src = visiblePhotos[currentIndex].querySelector('img').src;
+    }
+
+    window.openAllInLightbox = function () {
+        if (visiblePhotos.length > 0) {
+            currentIndex = 0;
+            lightboxImg.src = visiblePhotos[currentIndex].querySelector('img').src;
+            lightbox.classList.add('active');
+        }
+    }
+
+    addClickListeners();
+}
+
+
 const filterButtons = document.querySelectorAll(".filter-btn");
 const galleryItems = document.querySelectorAll(".galDesc");
 
 filterButtons.forEach(button => {
-  button.addEventListener("click", () => {
-    // Remove active class from all buttons
-    filterButtons.forEach(btn => btn.classList.remove("active"));
-    button.classList.add("active");
+    button.addEventListener("click", () => {
+        filterButtons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
 
-    const filter = button.getAttribute("data-filter");
+        const filter = button.getAttribute("data-filter");
 
-    galleryItems.forEach(item => {
-      if (filter === "all" || item.querySelector('.gal-photo').classList.contains(filter)) {
-        item.style.display = "flex"; 
-      } else {
-        item.style.display = "none";
-      }
+        galleryItems.forEach(item => {
+            if (filter === "all" || item.querySelector('.gal-photo').classList.contains(filter)) {
+                item.style.display = "flex";
+            } else {
+                item.style.display = "none";
+            }
+        });
+
+
+        visiblePhotos = Array.from(document.querySelectorAll('.gal-photo'))
+            .filter(photo => photo.parentElement.style.display !== "none");
+        addClickListeners();
     });
-
-
-    visiblePhotos = Array.from(document.querySelectorAll('.gal-photo'))
-                        .filter(photo => photo.parentElement.style.display !== "none");
-    addClickListeners(); 
-  });
 });
+
+//Gallery js ended
 
 
 // Academics logic started
 
 function showContent(section) {
     let syllabusList = document.getElementById('syllabusList');
-    if (!syllabusList) return; 
+    if (!syllabusList) return;
 
     let sections = {
         acdemicsCalendar: "<h2>Academic calendars</h2><p>The academic calendar outlines the schedule for the academic year, including the commencement of classes, internal assessments, and examination periods. For detailed dates and events, please refer to the official academic calendar: Academic Calendar PDF.</p>",
@@ -523,196 +504,181 @@ function showContent(section) {
     }
 }
 
-// Academics logic started
+// Academics js started
 
 function sortTable(n) {
-const table = document.getElementById("studentsTable");
-let rows = table.rows;
-let switching = true;
-let shouldSwitch;
-let dir = "asc"; // Set the sorting direction to ascending
+    const table = document.getElementById("studentsTable");
+    let rows = table.rows;
+    let switching = true;
+    let shouldSwitch;
+    let dir = "asc"; // Ascending order me set ho jayega
 
-while (switching) {
-switching = false;
-let rowsArray = Array.from(rows);
-for (let i = 1; i < rowsArray.length - 1; i++) {
-shouldSwitch = false;
-const x = rowsArray[i].getElementsByTagName("TD")[n];
-const y = rowsArray[i + 1].getElementsByTagName("TD")[n];
+    while (switching) {
+        switching = false;
+        let rowsArray = Array.from(rows);
+        for (let i = 1; i < rowsArray.length - 1; i++) {
+            shouldSwitch = false;
+            const x = rowsArray[i].getElementsByTagName("TD")[n];
+            const y = rowsArray[i + 1].getElementsByTagName("TD")[n];
 
-if (dir === "asc" && x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-shouldSwitch = true;
-break;
-} else if (dir === "desc" && x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-shouldSwitch = true;
-break;
-}
-}
-if (shouldSwitch) {
-rowsArray[i].parentNode.insertBefore(rowsArray[i + 1], rowsArray[i]);
-switching = true;
-} else {
-if (dir === "asc") {
-dir = "desc";
-switching = true;
-}
-}
-}
+            if (dir === "asc" && x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                shouldSwitch = true;
+                break;
+            } else if (dir === "desc" && x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                shouldSwitch = true;
+                break;
+            }
+        }
+        if (shouldSwitch) {
+            rowsArray[i].parentNode.insertBefore(rowsArray[i + 1], rowsArray[i]);
+            switching = true;
+        } else {
+            if (dir === "asc") {
+                dir = "desc";
+                switching = true;
+            }
+        }
+    }
 }
 
 function filterTable() {
-const companyFilter = document.getElementById("companyFilter").value.toLowerCase();
-const batchFilter = document.getElementById("batchFilter").value;
-const table = document.getElementById("studentsTable");
-const rows = table.getElementsByTagName("tr");
+    const companyFilter = document.getElementById("companyFilter").value.toLowerCase();
+    const batchFilter = document.getElementById("batchFilter").value;
+    const table = document.getElementById("studentsTable");
+    const rows = table.getElementsByTagName("tr");
 
-for (let i = 1; i < rows.length; i++) {
-const cells = rows[i].getElementsByTagName("td");
-const company = cells[2].innerText.toLowerCase();
-const batch = cells[3].innerText;
+    for (let i = 1; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName("td");
+        const company = cells[2].innerText.toLowerCase();
+        const batch = cells[3].innerText;
 
-if (
-(companyFilter === "" || company.includes(companyFilter)) &&
-(batchFilter === "" || batch.includes(batchFilter))
-) {
-rows[i].style.display = "";
-} else {
-rows[i].style.display = "none";
-}
-}
+        if (
+            (companyFilter === "" || company.includes(companyFilter)) &&
+            (batchFilter === "" || batch.includes(batchFilter))
+        ) {
+            rows[i].style.display = "";
+        } else {
+            rows[i].style.display = "none";
+        }
+    }
 }
 
 function filterFaculty() {
     const selectedSubject = document.getElementById("subjectFilter").value.toLowerCase();
-const searchName = document.getElementById("nameSearch").value.toLowerCase();
-const cards = document.querySelectorAll(".faculty-grid .faculty-card"); // Only target cards within faculty-grid
+    const searchName = document.getElementById("nameSearch").value.toLowerCase();
+    const cards = document.querySelectorAll(".faculty-grid .faculty-card"); // Only target cards within faculty-grid
 
-cards.forEach(card => {
-const subject = card.getAttribute("data-subject").toLowerCase();
-const name = card.getAttribute("data-name").toLowerCase();
+    cards.forEach(card => {
+        const subject = card.getAttribute("data-subject").toLowerCase();
+        const name = card.getAttribute("data-name").toLowerCase();
 
-const matchesSubject = selectedSubject === "all" || subject.includes(selectedSubject);
-const matchesName = name.includes(searchName);
+        const matchesSubject = selectedSubject === "all" || subject.includes(selectedSubject);
+        const matchesName = name.includes(searchName);
 
-card.style.display = matchesSubject && matchesName ? "flex" : "none"; 
-});
+        card.style.display = matchesSubject && matchesName ? "flex" : "none";
+    });
 }
 
-//Hamburger code started
+
 //Hamburger code started
 const hamBurger = document.querySelector('.hamBurger');
 const navLinks = document.querySelector('.nav-links');
 const dropdowns = document.querySelectorAll('.dropdown');
 
-// Toggle hamburger menu and animate icon
 hamBurger.addEventListener('click', (e) => {
-  e.stopPropagation();
-  navLinks.classList.toggle('active');
-  hamBurger.classList.toggle('active'); // Toggle active class on hamburger for animation
+    e.stopPropagation();
+    navLinks.classList.toggle('active');
+    hamBurger.classList.toggle('active'); 
 });
 
-// Close menu when clicking outside
 document.addEventListener('click', (e) => {
-  if (!navLinks.contains(e.target) && !hamBurger.contains(e.target)) {
-    navLinks.classList.remove('active');
-    hamBurger.classList.remove('active'); // Remove active class from hamburger
-    // Also close any open dropdowns when menu is closed
-    dropdowns.forEach(dropdown => dropdown.classList.remove('active'));
-  }
-});
-
-// --- REVISED DROPDOWN TOGGLE LOGIC for mobile ---
-// --- FIXED DROPDOWN TOGGLE LOGIC for mobile ---
-dropdowns.forEach(dropdown => {
-  const dropBtn = dropdown.querySelector('.drop-btn');
-
-  if (dropBtn) {
-    dropBtn.addEventListener('click', (e) => {
-      if (navLinks.classList.contains('active')) {
-        e.stopPropagation();
-
-        // Check if the clicked dropdown is already active
-        const isActive = dropdown.classList.contains('active');
-
-        // Close all dropdowns first
-        dropdowns.forEach(d => d.classList.remove('active'));
-
-        // If it was not active earlier, open it
-        if (!isActive) {
-          dropdown.classList.add('active');
-        }
-      }
-    });
-  }
-});
-// --- END FIXED DROPDOWN TOGGLE LOGIC ---
-
-// --- END REVISED DROPDOWN TOGGLE LOGIC ---
-
-// Close menu when a navigation link is clicked (for better UX on mobile)
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    // Only close if it's not a dropdown toggle button
-    if (!link.classList.contains('drop-btn')) {
-      navLinks.classList.remove('active');
-      hamBurger.classList.remove('active');
-      dropdowns.forEach(dropdown => dropdown.classList.remove('active')); // Close dropdowns too
+    if (!navLinks.contains(e.target) && !hamBurger.contains(e.target)) {
+        navLinks.classList.remove('active');
+        hamBurger.classList.remove('active'); 
+        dropdowns.forEach(dropdown => dropdown.classList.remove('active'));
     }
-  });
 });
 
+dropdowns.forEach(dropdown => {
+    const dropBtn = dropdown.querySelector('.drop-btn');
+
+    if (dropBtn) {
+        dropBtn.addEventListener('click', (e) => {
+            if (navLinks.classList.contains('active')) {
+                e.stopPropagation();
+
+                const isActive = dropdown.classList.contains('active');
+
+                dropdowns.forEach(d => d.classList.remove('active'));
+
+                if (!isActive) {
+                    dropdown.classList.add('active');
+                }
+            }
+        });
+    }
+});
+
+navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        if (!link.classList.contains('drop-btn')) {
+            navLinks.classList.remove('active');
+            hamBurger.classList.remove('active');
+            dropdowns.forEach(dropdown => dropdown.classList.remove('active')); 
+        }
+    });
+});
 
 //Hamburger code ended
 
 
 const dropBtns = document.querySelectorAll('.drop-btn');
 
-    dropBtns.forEach(btn => {
-      btn.addEventListener('click', (e) => {
+dropBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
         e.preventDefault();
         const parentLi = btn.parentElement;
         parentLi.classList.toggle('active');
-      });
     });
+});
 
-    // Close dropdown on scroll
-    window.addEventListener('scroll', () => {
-      dropBtns.forEach(btn => {
+window.addEventListener('scroll', () => {
+    dropBtns.forEach(btn => {
         const parentLi = btn.parentElement;
-        if(parentLi.classList.contains('active')){
-          parentLi.classList.remove('active');
+        if (parentLi.classList.contains('active')) {
+            parentLi.classList.remove('active');
         }
-      });
     });
+});
 
 
-    // Examination JS started
+// Examination JS started
 
-    const tabs = document.querySelectorAll('.tab');
-    const cards = document.querySelectorAll('.pyq-card');
-    let currentClass = '1st';
+const tabs = document.querySelectorAll('.tab');
+const cards = document.querySelectorAll('.pyq-card');
+let currentClass = '1st';
 
-    function showYear(classYear) {
-      currentClass = classYear;
-      tabs.forEach(tab => tab.classList.remove('active'));
-     const activeTab = document.querySelector(`.tab[onclick*="${classYear}"]`);
+function showYear(classYear) {
+    currentClass = classYear;
+    tabs.forEach(tab => tab.classList.remove('active'));
+    const activeTab = document.querySelector(`.tab[onclick*="${classYear}"]`);
     if (activeTab) {
-    activeTab.classList.add('active');
-  }
-      filterPYQs();
+        activeTab.classList.add('active');
     }
+    filterPYQs();
+}
 
-    function filterPYQs() {
-      const selectedYear = document.getElementById('yearFilter').value;
-      cards.forEach(card => {
+function filterPYQs() {
+    const selectedYear = document.getElementById('yearFilter').value;
+    cards.forEach(card => {
         const matchesClass = card.getAttribute('data-class') === currentClass;
         const matchesYear = selectedYear === 'all' || card.getAttribute('data-year') === selectedYear;
         card.parentElement.style.display = (matchesClass && matchesYear) ? 'block' : 'none';
-      });
-    }
+    });
+}
 
-        // Initial view
-        showYear('1st');
-      
-        //  Examination JS ended
+// Starting me 1st year dikhayega (By Default)
+showYear('1st');
+
+//  Examination JS ended
 
