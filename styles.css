@@ -512,8 +512,8 @@ body {
 
 @media screen and (max-width:660px) {
 
-  .hometext,
-  .linkBoxes,
+  
+.linkBoxes,
   .mainFooter {
     padding: 0.5rem;
   }
@@ -523,7 +523,7 @@ body {
   #para2,
   #para3 {
     line-height: 1.5rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .hometext h1 {
