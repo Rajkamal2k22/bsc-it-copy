@@ -297,7 +297,7 @@ body {
 
 .slider {
   display: flex;
-  aspect-ratio: 21/9;
+  aspect-ratio: 16/9;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
@@ -1500,7 +1500,7 @@ body {
   text-align: center;
 }
 
-.section h2 {
+.section h2, h1 {
   font-size: 36px;
   margin-bottom: 30px;
   padding-top: 15px;
