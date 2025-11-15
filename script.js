@@ -566,16 +566,14 @@ function filterTable() {
 function filterFaculty() {
     const selectedSubject = document.getElementById("subjectFilter").value.toLowerCase();
     const searchName = document.getElementById("nameSearch").value.toLowerCase();
-    const cards = document.querySelectorAll(".faculty-grid .faculty-card"); // Only target cards within faculty-grid
-
+    const cards = document.querySelectorAll(".faculty-grid .faculty-card, .coordinator-section .faculty-card"); 
     cards.forEach(card => {
-        const subject = card.getAttribute("data-subject").toLowerCase();
-        const name = card.getAttribute("data-name").toLowerCase();
+        const subject = card.getAttribute("data-subject") ? card.getAttribute("data-subject").toLowerCase() : '';
+        const name = card.getAttribute("data-name") ? card.getAttribute("data-name").toLowerCase() : '';
 
         const matchesSubject = selectedSubject === "all" || subject.includes(selectedSubject);
         const matchesName = name.includes(searchName);
-
-        card.style.display = matchesSubject && matchesName ? "flex" : "none";
+        card.style.display = (matchesSubject && matchesName) ? "flex" : "none";
     });
 }
 
