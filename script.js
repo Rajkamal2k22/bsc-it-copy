@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 500); 
 });
 
-//Notification Bar Logic  started
+//Notification Bar Logic started
+// NOTE: The data for notifications is now loaded by PHP, but JS handles the visual effects.
 
 const notificationTrack = document.querySelector('.notificationTrack');
 const notificationItemsTop = document.querySelectorAll('.notificationItem');
@@ -320,12 +321,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     //contactus form js started
-
+    // NOTE: PHP handles the server-side action, keeping client-side validation logic from original file.
     const form = document.getElementById('callBackForm')
 
     if (form) {
         form.addEventListener("submit", async function (e) {
             e.preventDefault();
+            // Since Web3Forms uses a third-party service, we keep the original logic for submission.
+            // For a PHP-only solution, this would be submitted to a PHP processing script.
 
             const formData = new FormData(form);
 
@@ -338,9 +341,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (response.ok) {
                     alert("✅ Form submitted successfully!");
                     form.reset();
-                    setTimeout(() => {
-                        location.reload();
-                    }, 1500);
+                    // setTimeout(() => { // Removed forced reload to avoid disrupting user.
+                    //     location.reload();
+                    // }, 1500);
                 } else {
                     alert("❌ Submission failed. Please try again.");
                 }
@@ -353,25 +356,34 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-  //contactus form js ended
+//contactus form js ended
 
 
 //Gallery js started
+// NOTE: Gallery logic remains mostly the same, handling DOM manipulation and lightbox.
 
 const gallery = document.getElementById('gal-gallery');
 if (gallery) {
-    const allPhotos = Array.from(document.querySelectorAll('.gal-photo'));
+    let allPhotos = [];
+    let visiblePhotos = [];
     const lightbox = document.getElementById('gal-lightbox');
     const lightboxImg = document.getElementById('gal-lightbox-img');
-    let visiblePhotos = allPhotos;
     let currentIndex = 0;
 
+    function refreshPhotos() {
+        allPhotos = Array.from(document.querySelectorAll('.gal-photo'));
+        visiblePhotos = allPhotos;
+        addClickListeners();
+    }
+
     function addClickListeners() {
-        visiblePhotos.forEach((photo, index) => {
+        allPhotos.forEach((photo, index) => {
             photo.onclick = () => {
-                currentIndex = index;
-                lightboxImg.src = photo.querySelector('img').src;
-                lightbox.classList.add('active');
+                currentIndex = visiblePhotos.findIndex(vp => vp === photo);
+                if (currentIndex !== -1) {
+                    lightboxImg.src = photo.querySelector('img').src;
+                    lightbox.classList.add('active');
+                }
             };
         });
     }
@@ -391,14 +403,17 @@ if (gallery) {
     }
 
     window.openAllInLightbox = function () {
+        visiblePhotos = Array.from(document.querySelectorAll('.gal-photo'))
+            .filter(photo => photo.parentElement.style.display !== "none");
+            
         if (visiblePhotos.length > 0) {
             currentIndex = 0;
             lightboxImg.src = visiblePhotos[currentIndex].querySelector('img').src;
             lightbox.classList.add('active');
         }
     }
-
-    addClickListeners();
+    
+    refreshPhotos(); // Initial call
 }
 
 
@@ -420,120 +435,63 @@ filterButtons.forEach(button => {
             }
         });
 
-
-        visiblePhotos = Array.from(document.querySelectorAll('.gal-photo'))
-            .filter(photo => photo.parentElement.style.display !== "none");
-        addClickListeners();
+        // Update visible photos array for lightbox navigation
+        if (gallery) {
+            gallery.refreshPhotos(); 
+            gallery.visiblePhotos = Array.from(document.querySelectorAll('.gal-photo'))
+                .filter(photo => photo.parentElement.style.display !== "none");
+        }
     });
 });
 
 //Gallery js ended
 
 
-// Academics logic started
+// Academics logic removed as it's now handled by PHP/static HTML structure.
 
-function showContent(section) {
-    let syllabusList = document.getElementById('syllabusList');
-    if (!syllabusList) return;
+// Placed Student and Faculty filter logic for client-side functionality
 
-    let sections = {
-        acdemicsCalendar: "<h2>Academic calendars</h2><p>The academic calendar outlines the schedule for the academic year, including the commencement of classes, internal assessments, and examination periods. For detailed dates and events, please refer to the official academic calendar: Academic Calendar PDF.</p>",
-        courseListining: "<h2>Course listings</h2><p>COCAS offers a diverse range of undergraduate and postgraduate programs across various faculties, including Arts, Science, Commerce, and Vocational courses. For a comprehensive list of courses, please visit the official website: COCAS Courses.</p>",
-        undergraduateProgram: "<h2>Undergraduate program</h2><p>The undergraduate programs at COCAS are designed to provide students with a solid foundation in their chosen fields, fostering both academic and professional growth. Detailed information about each program is available on the college's official website: Undergraduate Programs.</p>",
-        CinProgramming: "<h2>Certificate in programming</h2><p>COCAS offers various add-on and certificate courses aimed at enhancing students' skills and employability. For more information on available certificate programs, please refer to the 'Add-on/Certificate/Value Added/Outreach Programme' section on the official website: Certificate Programs.</p>",
-        studentRO: "<h2>Student research opportunities</h2><p>The college encourages student participation in research activities across various departments. Opportunities for research projects, workshops, and seminars are regularly updated. For the latest information, please check the 'Research and Innovation' section: Research Opportunities.</p>",
-        careerFair: "<h2>Career fair</h2><p>COCAS organizes career fairs and placement drives to connect students with potential employers. These events are announced periodically. For upcoming events and details, please visit the 'Student's Corner' section: Career Events.</p>",
-        learningRes: "<h2>Learning resource</h2><p>In this section you will get the resources for learning</p>",
-        extras: "<h2>Extras</h2><p> This section is extra part here extra's information will be given.</p>",
-    };
-
-    if (section === 'acdemics') {
-        syllabusList.innerHTML = `
-            <div id="academicsHwithBtn">
-                <h2>Academics</h2>
-                <button id="prospectusDownload"><a href="images/bsc it.pdf" download="B.Sc IT Prospectus.pdf">Download Prospectus</a></button>
-            </div>
-            <br>
-            <h3 id="yearName">First Year</h3><br>
-            <div class="coreGrid">
-                <ul>
-                    <h5 id="contentHeading">Core</h5>
-                    <li>- Hardware</li><li>- Intro to software</li><li>- Intro to IBM Architecture</li><li>- DBMS</li><li>- Operating system concept</li><li>- Basic electronics-1</li>
-                    <ul id="practicalSection">
-                        <h5 id="contentHeading">Practical</h5>
-                        <li>- RDBMS ORACLE</li><li>- Programming in C language</li>
-                    </ul>
-                </ul>
-                <ul>
-                    <h5 id="contentHeading">Languages</h5>
-                    <li>- C Programming language</li>
-                </ul>
-            </div>
-            <h3 id="yearName">Second Year</h3><br>
-            <div class="coreGrid">
-                <ul>
-                    <h5 id="contentHeading">Core</h5>
-                    <li>- Data structure</li><li>- Discreete Mathematics</li><li>- Linux</li><li>- Computer networking & Internet</li><li>- Digital computer networking</li>
-                    <ul id="practicalSection">
-                        <h5 id="contentHeading">Practical</h5>
-                        <li>- Linux</li><li>- Programming in C++ language</li>
-                    </ul>
-                </ul>
-                <ul>
-                    <h5 id="contentHeading">Languages</h5>
-                    <li>- OOP’s using C++</li><li>- Data structure</li><li>- Linux</li>
-                </ul>
-            </div>
-            <h3 id="yearName">Final Year</h3><br>
-            <div class="coreGrid">
-                <ul>
-                    <h5 id="contentHeading">Core</h5>
-                    <li>- Java programming</li><li>- Internet and Web designing</li><li>-  Intro to network security</li><li>- Visual programming to Visual Basic</li><li>- SQL Server</li><li>- System Analysis and design</li>
-                    <ul id="practicalSection">
-                        <h5 id="contentHeading">Practical</h5>
-                        <li>- Java programming</li><li>- Web development</li><li>- Visual Basic</li>
-                    </ul>
-                </ul>
-                <ul>
-                    <h5 id="contentHeading">Languages</h5>
-                    <li>- Java programming</li><li>- Web designing</li><li>- SQL</li>
-                </ul>
-            </div>`;
-    } else {
-        syllabusList.innerHTML = sections[section] || "<h2>Welcome</h2><p>Select a bookmark.</p>";
-    }
-}
-
-// Academics js started
-
-function sortTable(n) {
+window.sortTable = function(n) {
     const table = document.getElementById("studentsTable");
-    let rows = table.rows;
+    let rows = Array.from(table.rows).slice(1); // Get rows except header
     let switching = true;
-    let shouldSwitch;
-    let dir = "asc"; // Ascending order me set ho jayega
+    let dir = "asc"; 
+    let switchcount = 0;
 
     while (switching) {
         switching = false;
-        let rowsArray = Array.from(rows);
-        for (let i = 1; i < rowsArray.length - 1; i++) {
+        let shouldSwitch;
+        for (let i = 0; i < (rows.length - 1); i++) {
             shouldSwitch = false;
-            const x = rowsArray[i].getElementsByTagName("TD")[n];
-            const y = rowsArray[i + 1].getElementsByTagName("TD")[n];
+            const x = rows[i].getElementsByTagName("TD")[n];
+            const y = rows[i + 1].getElementsByTagName("TD")[n];
 
-            if (dir === "asc" && x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                shouldSwitch = true;
-                break;
-            } else if (dir === "desc" && x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                shouldSwitch = true;
-                break;
+            let xVal = x.innerHTML.toLowerCase();
+            let yVal = y.innerHTML.toLowerCase();
+
+            if (n === 0) { // For Sl.No column, compare numerically
+                 xVal = parseInt(x.innerHTML);
+                 yVal = parseInt(y.innerHTML);
+            }
+            
+            if (dir === "asc") {
+                if (xVal > yVal) {
+                    shouldSwitch = true;
+                    break;
+                }
+            } else if (dir === "desc") {
+                if (xVal < yVal) {
+                    shouldSwitch = true;
+                    break;
+                }
             }
         }
         if (shouldSwitch) {
-            rowsArray[i].parentNode.insertBefore(rowsArray[i + 1], rowsArray[i]);
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
             switching = true;
+            switchcount++;
         } else {
-            if (dir === "asc") {
+            if (switchcount === 0 && dir === "asc") {
                 dir = "desc";
                 switching = true;
             }
@@ -541,7 +499,7 @@ function sortTable(n) {
     }
 }
 
-function filterTable() {
+window.filterTable = function() {
     const companyFilter = document.getElementById("companyFilter").value.toLowerCase();
     const batchFilter = document.getElementById("batchFilter").value;
     const table = document.getElementById("studentsTable");
@@ -563,7 +521,7 @@ function filterTable() {
     }
 }
 
-function filterFaculty() {
+window.filterFaculty = function() {
     const selectedSubject = document.getElementById("subjectFilter").value.toLowerCase();
     const searchName = document.getElementById("nameSearch").value.toLowerCase();
     const cards = document.querySelectorAll(".faculty-grid .faculty-card, .coordinator-section .faculty-card"); 
@@ -656,17 +614,17 @@ const tabs = document.querySelectorAll('.tab');
 const cards = document.querySelectorAll('.pyq-card');
 let currentClass = '1st';
 
-function showYear(classYear) {
+window.showYear = function(classYear) {
     currentClass = classYear;
     tabs.forEach(tab => tab.classList.remove('active'));
     const activeTab = document.querySelector(`.tab[onclick*="${classYear}"]`);
     if (activeTab) {
         activeTab.classList.add('active');
     }
-    filterPYQs();
+    window.filterPYQs();
 }
 
-function filterPYQs() {
+window.filterPYQs = function() {
     const selectedYear = document.getElementById('yearFilter').value;
     cards.forEach(card => {
         const matchesClass = card.getAttribute('data-class') === currentClass;
@@ -676,7 +634,6 @@ function filterPYQs() {
 }
 
 // Starting me 1st year dikhayega (By Default)
-showYear('1st');
+window.showYear('1st');
 
-//  Examination JS ended
-
+// Examination JS ended
